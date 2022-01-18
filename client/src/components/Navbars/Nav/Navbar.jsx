@@ -1,8 +1,5 @@
-
-
 export const Navbar = () => {
-
     return <>
-        Navbar
+        navbar
     </>
 }
