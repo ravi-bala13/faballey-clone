@@ -1,13 +1,12 @@
 import "./App.css";
-import { Navbar } from "./components/Navbar/Navbar";
+import { Navbar } from "./components/Navbars/Nav/Navbar";
 import Products from "./components/Products/Products";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navbar />
       <Products></Products>
-      <Navbar></Navbar>
       <h1 className="text-3xl font-bold underline bg-red-500">Hello world!</h1>
     </div>
   );

@@ -1,5 +1,4 @@
 import Faballeynav2 from "../images/faballey2ndnavbar.png";
-import { IconButton } from '@chakra-ui/react'
 import { useState } from "react";
 export const Navbar = () => {
     const [show, setShow] = useState(false);
@@ -10,7 +9,7 @@ export const Navbar = () => {
         setShow(false);
     }
     return <>
-        <div className="w-full flex border border-blue-50 pt-2">
+        <div className="w-full flex border-blue-50 pt-2">
             <div className="flex justify-center">
                 <img className="w-30 h-6 mt-2 ml-2" src={Faballeynav2}></img>
             </div>
@@ -31,7 +30,7 @@ export const Navbar = () => {
                 <input class="placeholder:italic w-20 h-6 mt-2 sm:text-sm" placeholder="Search for anything..." type="text" name="search" />
             </div>
         </div>
-        {show ? <div className="w-full flex absolute">
+        {show ? <div className="w-full flex absolute bg-white">
             <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                 <a href="">Clothing</a>
                 <a href="">Curve</a>
