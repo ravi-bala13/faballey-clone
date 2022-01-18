@@ -146,7 +146,7 @@ function Products() {
                 <tr>
                   <td>
                     <select id="">
-                      <option value="casual">Casual Wear</option>
+                      <option value="casual" className="border border-black">Casual Wear</option>
                       <option value="maroon">Party Wear</option>
                       <option value="yellow">Work wear</option>
                     </select>
