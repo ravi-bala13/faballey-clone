@@ -145,14 +145,14 @@ function Products() {
               <tbody>
                 <tr>
                   <td>
-                    <select id="">
-                      <option value="casual" className="border border-black">Casual Wear</option>
+                    <select id="" className="border border-black">
+                      <option value="casual" >Casual Wear</option>
                       <option value="maroon">Party Wear</option>
                       <option value="yellow">Work wear</option>
                     </select>
                   </td>
                   <td>
-                    <select id="" onChange={handleColors}>
+                    <select id="" onChange={handleColors} className="border border-black">
                       <option value="all"> All Colors</option>
                       <option value="red">Red</option>
                       <option value="green">Green</option>
@@ -163,7 +163,7 @@ function Products() {
                     </select>
                   </td>
                   <td>
-                    <select id="">
+                    <select id="" className="border border-black">
                       <option value="size"> All size</option>
                       <option value="m">Medium</option>
                       <option value="s">Small</option>
@@ -171,7 +171,7 @@ function Products() {
                     </select>
                   </td>
                   <td>
-                    <select id="">
+                    <select id="" className="border border-black">
                       <option value="discount"> Discount</option>
                       <option value="ten">10% - 20%</option>
                       <option value="twenty">21% - 30%</option>
@@ -181,7 +181,7 @@ function Products() {
                     </select>
                   </td>
                   <td>
-                    <select id="" onChange={handlePricesort}>
+                    <select id="" onChange={handlePricesort} className="border border-black">
                       <option value="price"> Price</option>
                       <option value="fivehundred">₹500 - ₹1000</option>
                       <option value="onethousand">₹1001- ₹1500</option>
@@ -192,27 +192,27 @@ function Products() {
                 </tr>
                 <tr>
                   <td>
-                    <select name="" id="">
+                    <select name="" id="" className="border border-black">
                       <option value="price">Waist </option>
                     </select>
                   </td>
                   <td>
-                    <select name="" id="">
+                    <select name="" id="" className="border border-black">
                       <option value="price">Pattern</option>
                     </select>
                   </td>
                   <td>
-                    <select name="" id="">
+                    <select name="" id="" className="border border-black">
                       <option value="price">Fabric</option>
                     </select>
                   </td>
                   <td>
-                    <select name="" id="">
+                    <select name="" id="" className="border border-black">
                       <option value="price">Fit</option>
                     </select>
                   </td>
                   <td>
-                    <select name="" id="">
+                    <select name="" id="" className="border border-black">
                       <option value="price">Collections</option>
                     </select>
                   </td>
