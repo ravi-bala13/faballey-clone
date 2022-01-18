@@ -9,7 +9,7 @@ export const Nav1 = () => {
         setShow(false);
     }
     return <>
-        <div className="w-full flex border-blue-50 pt-2">
+        <div className="w-full flex border border-blue-50 pt-2">
             <div className="flex justify-center">
                 <img className="w-30 h-6 mt-2 ml-2" src={Faballeynav2}></img>
             </div>
@@ -41,7 +41,5 @@ export const Nav1 = () => {
                 <img className="w-full h-60" src="https://img.faballey.com/images/newindrpdnnv1.jpg" alt="New In" />
             </div>
         </div> : null}
-        <h1>Hello</h1>
-
     </>
 }
