@@ -15,8 +15,8 @@ export const Nav1 = () => {
             </div>
             <div className="w-2/6 border border-white">
                 <div className="text-xs font-medium mt-2 float-right mr-6">
-                    <p className="inline-block">Track Order | Gift Cards | Login | Sign up</p>
-                    <MdCardTravel className="inline-block ml-2 text-xl" />
+                    <p className="inline-block cursor-pointer">Track Order | Gift Cards | <span>Login</span> | <span>Sign up</span></p>
+                    <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
                 </div>
             </div>
         </div>
