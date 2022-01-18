@@ -1,6 +1,7 @@
 import Faballeynav2 from "../images/faballey2ndnavbar.png";
+import { FaSistrix } from "react-icons/fa";
 import { useState } from "react";
-export const Nav1 = () => {
+export const Nav2 = () => {
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
@@ -17,20 +18,35 @@ export const Nav1 = () => {
                 <img className="w-30 h-6 mt-2 ml-2" src={Faballeynav2}></img>
             </div>
             <div className="flex Lato',sans-serif font-semibold align-text-bottom mt-2">
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>NEW IN</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>THE EDIT</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)} > PARTY'21</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-pink-600" onMouseEnter={() => setShow4(true)} onMouseLeave={() => setShow4(false)}>CLOTHING</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black">TOPS</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black">DRESSES</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-pink-600">WINTER'21</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black">LOUNGEWAR</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black">LOOKBOOKS</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-pink-600">SALE</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-black">WFHEDIT</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-pink-600">2DRESSES AT Rs.1800</p>
-                <p className="text-xs mx-1 px-2 py-3 hover:border-b-4 border-b-pink-600 text-pink-600">2TOPS AT rs.999</p>
-                <input className="placeholder:italic w-20 h-6 mt-2 sm:text-sm" placeholder="Search for anything..." type="text" name="search" />
+                <div className="flex">
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>NEW IN</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>THE EDIT</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)} > PARTY'21</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-pink-600" onMouseEnter={() => setShow4(true)} onMouseLeave={() => setShow4(false)}>CLOTHING</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black">TOPS</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black">DRESSES</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-pink-600">WINTER'21</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black">LOUNGEWAR</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black">LOOKBOOKS</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-pink-600">SALE</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black">WFHEDIT</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-pink-600">2DRESSES AT ₹1800</p>
+                    <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-pink-600">2TOPS AT ₹999</p>
+                </div>
+                <div className="flex w-44">
+                    <span className="flex"><input className="placeholder:italic w-36 h-6 mt-2 sm:text-sm border border-black bg-gray-300 cursor-pointer" placeholder="Search" type="text" name="search" /><FaSistrix className="text-xl mt-3 float-right cursor-pointer" /></span>
+                </div>
+                <div className="flex h-6 mt-2">
+                    <select className="border border-black text-base cursor-pointer">
+                        <option value="inr">₹ INR</option>
+                        <option value="usd">$ USD</option>
+                        <option value="csd">$ CSD</option>
+                        <option value="gbp">£ GBP</option>
+                        <option value="aud">$ AUD</option>
+                        <option value="sgd">$ SGD</option>
+                        <option value="eur">€ EUR</option>
+                    </select>
+                </div>
             </div>
         </div>
         {
