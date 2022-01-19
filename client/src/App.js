@@ -1,15 +1,17 @@
 import "./App.css";
 import { Navbar } from "./components/Navbars/Nav/Navbar";
 import Products from "./components/Products/Products";
+import { Home } from "./components/landing/home";
 
 function App() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar />
       <div>
       </div>
-      <Products></Products>
+      <Products></Products> */}
 
+      <Home />
     </div>
   );
 }
