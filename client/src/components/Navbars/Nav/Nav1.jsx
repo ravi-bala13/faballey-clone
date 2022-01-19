@@ -53,7 +53,7 @@ export const Nav1 = () => {
                             <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
                         </div>
                     </div>
-                    <h5 className="inline-block ml-52 mt-6 cursor-pointer">skip</h5>
+                    <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setIsModalVisible(false)}>skip</h5>
                 </div>
             </div>
         </Modal>
