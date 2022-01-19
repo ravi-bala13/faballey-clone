@@ -50,7 +50,7 @@ export const Nav2 = () => {
             </div>
         </div>
         {
-            show ? <div className="w-full flex absolute bg-white border-2 border-yellow-400" onMouseEnter={mouseEnter}>
+            show ? <div className="w-full flex absolute bg-white border-2 border-yellow-400 font-black" onMouseEnter={mouseEnter}>
                 <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2" href=""> Clothing</a>
                     <a className="mt-2" href=""> Curve</a>
@@ -63,7 +63,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show2 ? <div className="w-full flex absolute bg-white" onMouseEnter={() => setShow2(true)}>
+            show2 ? <div className="w-full flex absolute bg-white font-black" onMouseEnter={() => setShow2(true)}>
                 <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <h2 className="font-bold text-base">TRENDS</h2>
                     <a className="mt-2" href=""> Florals</a>
@@ -90,7 +90,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show3 ? <div className="w-full flex absolute bg-white" onMouseEnter={() => setShow3(true)}>
+            show3 ? <div className="w-full flex absolute bg-white font-black" onMouseEnter={() => setShow3(true)}>
                 <div className="w-34 flex flex-col ml-60 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2" href=""> Lookbook</a>
                     <a className="mt-2" href=""> Collection</a>
@@ -101,7 +101,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show4 ? <div className="w-full flex absolute bg-white pb-4" onMouseEnter={() => setShow4(true)}>
+            show4 ? <div className="w-full flex absolute bg-white pb-4 font-black" onMouseEnter={() => setShow4(true)}>
                 <div className="w-34 flex flex-col ml-56 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2" href=""> Tops</a>
                     <a className="mt-2" href=""> Dresses</a>

@@ -210,11 +210,7 @@ function Products() {
                     </select>
                   </td>
                   <td>
-<<<<<<< Updated upstream
-                    <select id="" className="border border-black">
-=======
                     <select id="" onChange={handleDiscount}>
->>>>>>> Stashed changes
                       <option value="discount"> Discount</option>
                       <option value="ten">10% - 20%</option>
                       <option value="twenty">21% - 30%</option>
