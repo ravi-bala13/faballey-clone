@@ -50,7 +50,7 @@ export const Nav2 = () => {
             </div>
         </div>
         {
-            show ? <div className="w-full flex absolute bg-white text-black" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+            show ? <div className="w-full flex absolute bg-white text-black z-50" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
                 <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2 text-black" href=""> Clothing</a>
                     <a className="mt-2 text-black" href=""> Curve</a>
@@ -63,7 +63,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show2 ? <div className="w-full flex absolute bg-white text-black" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>
+            show2 ? <div className="w-full flex absolute bg-white text-black z-50" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>
                 <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <h2 className="font-bold text-base text-black">TRENDS</h2>
                     <a className="mt-2 text-black" href=""> Florals</a>
@@ -90,7 +90,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show3 ? <div className="w-full flex absolute bg-white text-black" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)}>
+            show3 ? <div className="w-full flex absolute bg-white text-black z-50" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)}>
                 <div className="w-34 flex flex-col ml-60 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2 text-black" href=""> Lookbook</a>
                     <a className="mt-2 text-black" href=""> Collection</a>
@@ -101,7 +101,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show4 ? <div className="w-full flex absolute bg-white pb-4 text-black" onMouseEnter={() => setShow4(true)} onMouseLeave={() => setShow4(false)}>
+            show4 ? <div className="w-full flex absolute bg-white pb-4 text-black z-50" onMouseEnter={() => setShow4(true)} onMouseLeave={() => setShow4(false)}>
                 <div className="w-34 flex flex-col ml-56 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2 text-black" href=""> Tops</a>
                     <a className="mt-2 text-black" href=""> Dresses</a>
