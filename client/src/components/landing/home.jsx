@@ -28,6 +28,14 @@ export const Home = () => {
     return () => {};
   }, [index]);
 
+  const nextSlide = () => {
+    setIndex((prevIndex) => prevIndex === prevIndex + 1);
+  };
+
+  const prevSlide = () => {
+    setIndex((prevIndex) => prevIndex === prevIndex - 1);
+  };
+
   return (
     <div>
       <div className="border flex text-xs font-semibold text-center w-full">
@@ -58,6 +66,28 @@ export const Home = () => {
               }}
             ></div>
           ))}
+        </div>
+
+        <div
+          onClick={nextSlide}
+          className={
+            index === image.length - 1
+              ? "hidden"
+              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8"
+          }
+        >
+          ⪢
+        </div>
+
+        <div
+          onClick={prevSlide}
+          className={
+            index === 0
+              ? "hidden"
+              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8"
+          }
+        >
+          ⪡
         </div>
       </div>
 
