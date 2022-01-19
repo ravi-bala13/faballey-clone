@@ -4,8 +4,8 @@ import { Main } from "./components/Route/Main";
 function App() {
   return (
     <div>
-      <Main />
-    </div >
+      <Main></Main>
+    </div>
   );
 }
 
