@@ -7,7 +7,7 @@ const userSchema = new Schema(
         password: { type: String, required: false },
         username: { type: String, required: false },
         mobile: { type: Number, required: true },
-        productId: { type: Object, required: false },
+        productId: [{ type: Object, required: false }],
         wishList: [{ type: Object, required: false }],
     },
     {
