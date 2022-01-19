@@ -25,5 +25,18 @@ router.get("/productData", async function (req, res) {
             });
     }
 });
+router.get("/product/:id", async function (req, res) {
+    try {
+        const product = await Product.findById(req.params.id).lean().exec();
+        return res.status(200).send(product);
+    } catch (e) {
+        return res
+            .status(500)
+            .json({
+                message: e.message,
+                status: "failed send coursesData in the controller",
+            });
+    }
+});
 
 module.exports = router;

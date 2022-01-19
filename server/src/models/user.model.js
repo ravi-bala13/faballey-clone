@@ -1,17 +1,13 @@
-const registrationSchema = new mongoose.Schema(
+const { Schema, model } = require('mongoose');
+
+const userSchema = new Schema(
     {
-        full_Name: {
-            type: number,
-            trim: true,
-            minlength: 10
-        },
-        tokens: [{
-            token: {
-                type: String,
-                required: true
-            }
-        }],
-        cartItems: [{ type: Object, required: false }],
+        fullName: { type: String, required: false },
+        email: { type: String, required: false },
+        password: { type: String, required: false },
+        username: { type: String, required: false },
+        mobile: { type: Number, required: true },
+        productId: { type: Object, required: false },
         wishList: [{ type: Object, required: false }],
     },
     {
@@ -20,4 +16,4 @@ const registrationSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("user", registrationSchema);
+module.exports = model('users', userSchema);

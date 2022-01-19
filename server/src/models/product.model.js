@@ -18,7 +18,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     }],
-    description: String,
     details: [{ type: String, required: false }],
     statusProduct: { type: String, required: false },
     tags: [{
