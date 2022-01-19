@@ -44,7 +44,7 @@ export const Nav1 = () => {
                     <label>for a quicker checkout</label>
                     <input className="px-36 py-4 border border-slate-400" placeholder="Enter Mobile/Email"></input>
                     <button className="px-48 py-4 bg-pink-600 mt-4"><span className="font-bold text-white">CONTINUE</span></button>
-                    <h5><span>Or continue with</span></h5>
+                    <h5>--------------Or continue with-------------------</h5>
                 </div>
             </div>
         </Modal>
