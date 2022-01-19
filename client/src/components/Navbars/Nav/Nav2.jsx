@@ -13,12 +13,12 @@ export const Nav2 = () => {
         setShow(false);
     }
     return <>
-        <div className="w-full flex border border-blue-50 pt-2">
+        <div className="w-full flex border border-blue-50">
             <div className="flex justify-center">
                 <img className="w-30 h-6 mt-2 ml-2" src={Faballeynav2}></img>
             </div>
             <div className="flex Lato',sans-serif font-semibold align-text-bottom mt-2">
-                <div className="flex">
+                <div className="flex h-full">
                     <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>NEW IN</p>
                     <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>THE EDIT</p>
                     <p className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 border-b-pink-600 text-black" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)} > PARTY'21</p>
@@ -50,7 +50,7 @@ export const Nav2 = () => {
             </div>
         </div>
         {
-            show ? <div className="w-full flex absolute bg-white">
+            show ? <div className="w-full flex absolute bg-white border-2 border-yellow-400" onMouseEnter={mouseEnter}>
                 <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2" href=""> Clothing</a>
                     <a className="mt-2" href=""> Curve</a>
@@ -63,7 +63,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show2 ? <div className="w-full flex absolute bg-white">
+            show2 ? <div className="w-full flex absolute bg-white" onMouseEnter={() => setShow2(true)}>
                 <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <h2 className="font-bold text-base">TRENDS</h2>
                     <a className="mt-2" href=""> Florals</a>
@@ -90,7 +90,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show3 ? <div className="w-full flex absolute bg-white">
+            show3 ? <div className="w-full flex absolute bg-white" onMouseEnter={() => setShow3(true)}>
                 <div className="w-34 flex flex-col ml-60 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2" href=""> Lookbook</a>
                     <a className="mt-2" href=""> Collection</a>
@@ -101,7 +101,7 @@ export const Nav2 = () => {
             </div> : null
         }
         {
-            show4 ? <div className="w-full flex absolute bg-white pb-4">
+            show4 ? <div className="w-full flex absolute bg-white pb-4" onMouseEnter={() => setShow4(true)}>
                 <div className="w-34 flex flex-col ml-56 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
                     <a className="mt-2" href=""> Tops</a>
                     <a className="mt-2" href=""> Dresses</a>
