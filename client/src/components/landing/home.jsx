@@ -95,7 +95,7 @@ export const Home = () => {
         <img src="https://img.faballey.com/images/banner/751a510b-deb8-46ab-9013-67aba9f3ec46.gif" />
       </div>
 
-      <div className="border-2 border-black text-center text-2xl font-semibold ">
+      <div className="text-center text-2xl font-semibold ">
         <p className="m-4">WHAT WE'RE CRUSHING ON</p>
         <div className="flex">
           {crushing_img.map((e, id) => (
@@ -106,12 +106,12 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className="border-2 border-black text-center text-2xl font-semibold ">
+      <div className="text-center text-2xl font-semibold ">
         <p className="m-4">HOT RIGHT NOW</p>
         <img src="https://img.faballey.com/images/banner/65463db9-3cb2-44bb-aa35-9a1630b881d0.jpg" />
       </div>
 
-      <div className="border-2 border-black text-center text-2xl font-semibold ">
+      <div className="text-center text-2xl font-semibold ">
         <p className="m-4">SIZZLING & SPANKIN' NEW</p>
         <img src="https://img.faballey.com/images/banner/6aa99031-703e-4b07-8cb6-e844ab2991cc.jpg" />
       </div>
