@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Products.css";
 
-function Products() {
+export const Products = () => {
   const [prodList, setProdList] = useState([]);
   console.log("prodList:", prodList);
 
@@ -38,6 +38,45 @@ function Products() {
     }
     if (option === "maroon") {
       const updatelist = prodList.filter((ev) => ev.color === option);
+      setProdList(updatelist);
+    }
+  };
+
+  const handleDiscount = (e) => {
+    const option = e.target.value;
+    if (option === "ten") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 20 &&
+          (ev.discount / ev.price) * 100 > 10
+      );
+      setProdList(updatelist);
+    }
+
+    if (option === "twenty") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 30 &&
+          (ev.discount / ev.price) * 100 > 21
+      );
+      setProdList(updatelist);
+    }
+
+    if (option === "thirty") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 40 &&
+          (ev.discount / ev.price) * 100 > 31
+      );
+      setProdList(updatelist);
+    }
+
+    if (option === "forty") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 50 &&
+          (ev.discount / ev.price) * 100 > 41
+      );
       setProdList(updatelist);
     }
   };
@@ -171,7 +210,7 @@ function Products() {
                     </select>
                   </td>
                   <td>
-                    <select id="" className="border border-black">
+                    <select id="" onChange={handleDiscount} className="border border-black">
                       <option value="discount"> Discount</option>
                       <option value="ten">10% - 20%</option>
                       <option value="twenty">21% - 30%</option>
@@ -240,4 +279,4 @@ function Products() {
   );
 }
 
-export default Products;
+// export default Products;

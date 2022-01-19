@@ -1,17 +1,10 @@
 import "./App.css";
-import { Navbar } from "./components/Navbars/Nav/Navbar";
-import Products from "./components/Products/Products";
-import { Home } from "./components/landing/home";
+import { Main } from "./components/Route/Main";
 
 function App() {
   return (
     <div>
-      {/* <Navbar />
-      <div>
-      </div>
-      <Products></Products> */}
-
-      <Home />
+      <Main></Main>
     </div>
   );
 }
