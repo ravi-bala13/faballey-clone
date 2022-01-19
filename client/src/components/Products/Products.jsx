@@ -210,7 +210,7 @@ function Products() {
                     </select>
                   </td>
                   <td>
-                    <select id="" onChange={handleDiscount}>
+                    <select id="" onChange={handleDiscount} className="border border-black">
                       <option value="discount"> Discount</option>
                       <option value="ten">10% - 20%</option>
                       <option value="twenty">21% - 30%</option>
