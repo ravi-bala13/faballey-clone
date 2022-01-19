@@ -42,6 +42,45 @@ function Products() {
     }
   };
 
+  const handleDiscount = (e) => {
+    const option = e.target.value;
+    if (option === "ten") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 20 &&
+          (ev.discount / ev.price) * 100 > 10
+      );
+      setProdList(updatelist);
+    }
+
+    if (option === "twenty") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 30 &&
+          (ev.discount / ev.price) * 100 > 21
+      );
+      setProdList(updatelist);
+    }
+
+    if (option === "thirty") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 40 &&
+          (ev.discount / ev.price) * 100 > 31
+      );
+      setProdList(updatelist);
+    }
+
+    if (option === "forty") {
+      const updatelist = prodList.filter(
+        (ev) =>
+          (ev.discount / ev.price) * 100 <= 50 &&
+          (ev.discount / ev.price) * 100 > 41
+      );
+      setProdList(updatelist);
+    }
+  };
+
   const handlePricesort = (e) => {
     const option = e.target.value;
 
@@ -171,7 +210,11 @@ function Products() {
                     </select>
                   </td>
                   <td>
+<<<<<<< Updated upstream
                     <select id="" className="border border-black">
+=======
+                    <select id="" onChange={handleDiscount}>
+>>>>>>> Stashed changes
                       <option value="discount"> Discount</option>
                       <option value="ten">10% - 20%</option>
                       <option value="twenty">21% - 30%</option>
