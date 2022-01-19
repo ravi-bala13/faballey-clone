@@ -15,11 +15,11 @@ export const Nav2 = () => {
     return <>
         <div className="w-full flex border border-blue-50">
             <div className="flex justify-center">
-                <img className="w-30 h-6 mt-2 ml-2" src={Faballeynav2}></img>
+                <a href="/"><img className="w-30 h-6 mt-2 ml-2" src={Faballeynav2}></img></a>
             </div>
             <div className="flex Lato',sans-serif font-semibold align-text-bottom mt-2">
                 <div className="flex h-full">
-                    <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>NEW IN</a>
+                    <a href="/products" className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>NEW IN</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>THE EDIT</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)} > PARTY'21</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-pink-600 border-b-pink-600 text-pink-600" onMouseEnter={() => setShow4(true)} onMouseLeave={() => setShow4(false)}>CLOTHING</a>
