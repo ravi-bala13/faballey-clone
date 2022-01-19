@@ -47,10 +47,10 @@ export const Footer = () => {
                     </ul>
                 </div>
                 <div className="flex flex-col w-2/5 border-r border-black">
-                    <div>
+                    <div className="w-20 m-auto">
                         <h3>Help</h3>
                     </div>
-                    <div className="flex">
+                    <div className="flex w-full">
                         <ul>
                             <li><a href="/">Order Status</a></li>
                             <li><a href="/">Returns &amp; Exchange</a></li>
