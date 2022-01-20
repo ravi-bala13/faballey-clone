@@ -39,12 +39,23 @@ export const Nav1 = () => {
             </div>
         </div>
         <Modal title="LOGIN OR SIGNUP" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
-            <div className="w-full border border-yellow-400 py-8">
-                <div className="w-9/12 ml-2">
-                    <label>for a quicker checkout</label>
-                    <input className="px-36 py-4 border border-slate-400" placeholder="Enter Mobile/Email"></input>
-                    <button className="px-48 py-4 bg-pink-600 mt-4"><span className="font-bold text-white">CONTINUE</span></button>
-                    <h5><span>Or continue with</span></h5>
+            <div className="w-full py-8">
+                <div className="w-11/12 ml-2">
+                    <label><h4 className="font-bold">for a quicker checkout</h4></label>
+                    <input className="w-full py-4 border border-slate-400 mt-4 placeholder:align-baseline" placeholder="Enter Mobile/Email"></input>
+                    <div className="w-full justify-center align-middle mt-4 bg-pink-600 cursor-pointer"><div className="w-24 m-auto py-3 bg-pink-600"><h4 className="text-white font-bold">CONTINUE</h4></div></div>
+                    <div className="w-full justify-center ml-16 mt-4">
+                        <h5 className="inline-block ml-28">Or continue with</h5>
+                    </div>
+                    <div className="w-full flex justify-evenly mt-4">
+                        <div className="w-5/12">
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/loginfb.png" alt="" />
+                        </div>
+                        <div className="w-5/12">
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
+                        </div>
+                    </div>
+                    <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setIsModalVisible(false)}>skip</h5>
                 </div>
             </div>
         </Modal>

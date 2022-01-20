@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Products.css";
 
-function Products() {
+export const Products = () => {
   const circle_bool = false;
   const [prodList, setProdList] = useState([]);
   console.log("prodList:", prodList);
@@ -275,6 +275,6 @@ function Products() {
       </div>
     </div>
   );
-}
+};
 
-export default Products;
+// export default Products;
