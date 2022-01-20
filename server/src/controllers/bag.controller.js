@@ -9,22 +9,12 @@ const Product = require("../models/product.model");
 const authenticate = require('../middlewares/authenticate')
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   return res.send("empty BAG");
-// });
-
-router.get("/",authenticate, async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
-    let userId=req.user._id
+    let userId = req.user._id
     let user = await User.findById(userId);
 
     let bag = user.bagItems;
-
-    // if (bag.length === 0) {
-    //   return res.send(["empty BAG"]);
-    // }
-
-    // console.log(bag);
 
     let prodArr = [];
     for (let i = 0; i < bag.length; i++) {
@@ -38,14 +28,12 @@ router.get("/",authenticate, async (req, res) => {
   }
 });
 
-router.post("/add",authenticate, async (req, res) => {
-  let {  prodId } = req.body;
-  let userId=req.user._id
+router.post("/add", authenticate, async (req, res) => {
+  let { prodId } = req.body;
+  let userId = req.user._id;
 
-  // console.log(userId,"asd")
   let user = await User.findById(userId).lean().exec();
-  //let user = await User.findById(userId).lean().exec();
-console.log("user",user)
+  console.log("user", user)
   let bag = user.bagItems;
   if (bag.length == 0) {
     user = await User.findByIdAndUpdate(
@@ -55,7 +43,8 @@ console.log("user",user)
     )
       .lean()
       .exec();
-    return res.json(user);  }
+    return res.json(user);
+  }
   for (let i = 0; i < bag.length; i++) {
     if (bag[i].productId == prodId) {
       return res.send("Item Already Added");
@@ -72,9 +61,9 @@ console.log("user",user)
   return res.json(user);
 });
 
-router.post("/deleteItem/",authenticate, async (req, res) => {
-  let {  prodId } = req.body;
-  let userId=req.user._id
+router.post("/deleteItem/", authenticate, async (req, res) => {
+  let { prodId } = req.body;
+  let userId = req.user._id
   let user = await User.findById(userId).lean().exec();
 
   let bag = user.bagItems;

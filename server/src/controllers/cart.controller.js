@@ -9,22 +9,14 @@ const Product = require("../models/product.model");
 const authenticate = require('../middlewares/authenticate')
 const router = express.Router();
 
-// router.get("/",authenticate, (req, res) => {
-//   return res.send("empty cart");
-// });
 
-router.get("/",authenticate, async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
-    let userId=req.user._id
+    let userId = req.user._id
     let user = await User.findById(userId);
 
     let cart = user.cartItems;
 
-    // if (cart.length === 0) {
-    //   return res.send(["empty cart"]);
-    // }
-
-    // console.log(cart);
 
     let prodArr = [];
     for (let i = 0; i < cart.length; i++) {
@@ -38,22 +30,22 @@ router.get("/",authenticate, async (req, res) => {
   }
 });
 
-router.post("/add", authenticate,async (req, res) => {
-  let {  prodId } = req.body;
-  let userId=req.user._id
+router.post("/add", authenticate, async (req, res) => {
+  let { prodId } = req.body;
+  let userId = req.user._id
   let user = await User.findById(userId).lean().exec();
 
   let cart = user.cartItems;
-if(cart.length===0){
-  user = await User.findByIdAndUpdate(
-    userId,
-    { cartItems: [...cart, { productId: prodId }] },
-    { new: true }
-  )
-    .lean()
-    .exec();
-  return res.json(user);
-}
+  if (cart.length === 0) {
+    user = await User.findByIdAndUpdate(
+      userId,
+      { cartItems: [...cart, { productId: prodId }] },
+      { new: true }
+    )
+      .lean()
+      .exec();
+    return res.json(user);
+  }
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].productId == prodId) {
       return res.send("Item Already Added");
@@ -70,9 +62,9 @@ if(cart.length===0){
   return res.json(user);
 });
 
-router.post("/deleteItem/",authenticate, async (req, res) => {
+router.post("/deleteItem/", authenticate, async (req, res) => {
   let { prodId } = req.body;
- let userId=req.user._id
+  let userId = req.user._id
   let user = await User.findById(userId).lean().exec();
 
   let cart = user.cartItems;
