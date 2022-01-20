@@ -1,7 +1,7 @@
 import React from "react";
 import "./ProductDetails.css";
 
-function ProductDetails() {
+export const ProductDetails = () => {
   return (
     <div className="border-2 m-auto w-11/12 flex flex-row">
       <div className="border-2 w-2/3 h-96 grid">
@@ -29,8 +29,10 @@ function ProductDetails() {
         <p>Inclusive of all taxes</p>
         <p>SKU: DRS04279Z</p>
         <p>COLOUR: BLUE</p>
-        <div>clrs</div>
-        <p>Size</p>
+        <img
+          src="https://i.ibb.co/F7x7QNz/Capture.jpg"
+          alt="size and clr img"
+        />
         <div>
           <button className="my-button border-2 w-48 h-12 mr-5">
             ADD TO BAG
@@ -44,6 +46,6 @@ function ProductDetails() {
       </div>
     </div>
   );
-}
+};
 
-export default ProductDetails;
+// export default ProductDetails;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Products.css";
 
 export const Products = () => {
@@ -150,8 +151,8 @@ export const Products = () => {
         <div className="left-col">
           <table className="left-col-options">
             <tbody>
-              {left_opitons.map((item) => (
-                <tr>
+              {left_opitons.map((item, i) => (
+                <tr key={i}>
                   <td className="border-b-2">{item}</td>
                 </tr>
               ))}
@@ -254,21 +255,23 @@ export const Products = () => {
 
           <div className="bottom-products">
             {prodList.map((item) => (
-              <div className="each-item" key={item.id}>
-                <div className="for-img">
-                  <img src={item.image} alt="No load" />
-                  {circle_bool ? (
-                    <span className="offer-circle">
-                      50% <br />
-                      OFF
-                    </span>
-                  ) : null}
+              <Link to={"/products/details"}>
+                <div className="each-item" key={item.id}>
+                  <div className="for-img">
+                    <img src={item.image} alt="No load" />
+                    {circle_bool ? (
+                      <span className="offer-circle">
+                        50% <br />
+                        OFF
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="for-details">
+                    <p>{item.title}</p>
+                    <p>₹{item.price}</p>
+                  </div>
                 </div>
-                <div className="for-details">
-                  <p>{item.title}</p>
-                  <p>₹{item.price}</p>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
