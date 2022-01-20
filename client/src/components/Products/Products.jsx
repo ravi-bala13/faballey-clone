@@ -2,8 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 
 export const Products = () => {
+  const circle_bool = false;
   const [prodList, setProdList] = useState([]);
   console.log("prodList:", prodList);
+
+  const left_opitons = [
+    "PARTY WEAR",
+    "WORK FROM COLLECTION",
+    "LOUNGEWEAR",
+    "NAB-NOW PIECES",
+    "TOPS",
+    "DRESSES",
+    "SKIRTS",
+    "BOTTOMS",
+    "WINTER",
+    "WEAR",
+    "JEANS",
+    "SHORTS",
+    "SHRUGS",
+    "UNDER 999",
+  ];
 
   useEffect(() => {
     getProducts();
@@ -128,53 +146,15 @@ export const Products = () => {
 
   return (
     <div>
-      <div className="navbar">1</div>
       <div className="container">
         <div className="left-col">
           <table className="left-col-options">
             <tbody>
-              <tr>
-                <td>PARTY WEAR</td>
-              </tr>
-              <tr>
-                <td>WORK FROM COLLECTION</td>
-              </tr>
-              <tr>
-                <td>LOUNGEWEAR</td>
-              </tr>
-              <tr>
-                <td>NAB-NOW PIECES</td>
-              </tr>
-              <tr>
-                <td>TOPS</td>
-              </tr>
-              <tr>
-                <td>DRESSES</td>
-              </tr>
-              <tr>
-                <td>SKIRTS</td>
-              </tr>
-              <tr>
-                <td>BOTTOMS</td>
-              </tr>
-              <tr>
-                <td>WINTER WEAR</td>
-              </tr>
-              <tr>
-                <td>JEANS</td>
-              </tr>
-              <tr>
-                <td>SHORTS</td>
-              </tr>
-              <tr>
-                <td>SHRUGS</td>
-              </tr>
-              <tr>
-                <td>UNDER 699</td>
-              </tr>
-              <tr>
-                <td>UNDER 999</td>
-              </tr>
+              {left_opitons.map((item) => (
+                <tr>
+                  <td className="border-b-2">{item}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -185,13 +165,17 @@ export const Products = () => {
                 <tr>
                   <td>
                     <select id="" className="border border-black">
-                      <option value="casual" >Casual Wear</option>
+                      <option value="casual">Casual Wear</option>
                       <option value="maroon">Party Wear</option>
                       <option value="yellow">Work wear</option>
                     </select>
                   </td>
                   <td>
-                    <select id="" onChange={handleColors} className="border border-black">
+                    <select
+                      id=""
+                      onChange={handleColors}
+                      className="border border-black"
+                    >
                       <option value="all"> All Colors</option>
                       <option value="red">Red</option>
                       <option value="green">Green</option>
@@ -210,7 +194,11 @@ export const Products = () => {
                     </select>
                   </td>
                   <td>
-                    <select id="" onChange={handleDiscount} className="border border-black">
+                    <select
+                      id=""
+                      onChange={handleDiscount}
+                      className="border border-black"
+                    >
                       <option value="discount"> Discount</option>
                       <option value="ten">10% - 20%</option>
                       <option value="twenty">21% - 30%</option>
@@ -220,7 +208,11 @@ export const Products = () => {
                     </select>
                   </td>
                   <td>
-                    <select id="" onChange={handlePricesort} className="border border-black">
+                    <select
+                      id=""
+                      onChange={handlePricesort}
+                      className="border border-black"
+                    >
                       <option value="price"> Price</option>
                       <option value="fivehundred">₹500 - ₹1000</option>
                       <option value="onethousand">₹1001- ₹1500</option>
@@ -265,6 +257,12 @@ export const Products = () => {
               <div className="each-item" key={item.id}>
                 <div className="for-img">
                   <img src={item.image} alt="No load" />
+                  {circle_bool ? (
+                    <span className="offer-circle">
+                      50% <br />
+                      OFF
+                    </span>
+                  ) : null}
                 </div>
                 <div className="for-details">
                   <p>{item.title}</p>
@@ -277,6 +275,6 @@ export const Products = () => {
       </div>
     </div>
   );
-}
+};
 
 // export default Products;
