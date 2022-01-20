@@ -1,26 +1,18 @@
 import "./App.css";
-<<<<<<< Updated upstream
-import { Navbar } from "./components/Navbars/Nav/Navbar";
-=======
-
->>>>>>> Stashed changes
 import Products from "./components/Products/Products";
 
 import { Navbar } from "./components/Navbars/Nav/Navbar";
+import ProductDetails from "./components/Products/ProductDetails";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <div>
-      </div>
+      <div></div>
       <Products></Products>
-<<<<<<< Updated upstream
+      {/* <ProductDetails></ProductDetails> */}
 
-=======
-      {/* <Navbar></Navbar> */}
       <h1 className="text-3xl font-bold underline bg-red-500">Hello world!</h1>
->>>>>>> Stashed changes
     </div>
   );
 }
