@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Products } from "../Products/Products";
 import { ProductDetails } from "../Products/ProductDetails";
 import { Home } from "../landing/home";
+
 import { Footer } from "../Footer/Footer";
 import { Cart } from "../checkout/Cart";
 export const Main = () => {
