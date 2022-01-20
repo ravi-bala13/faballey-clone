@@ -34,7 +34,7 @@ export const Nav1 = () => {
             <div className="w-2/6 border border-white">
                 <div className="text-xs font-medium mt-2 float-right mr-6">
                     <p className="inline-block cursor-pointer">Track Order | Gift Cards | <span onClick={showModal}>Login</span> | <span onClick={showModal}>Sign up</span></p>
-                    <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
+                    <a href="/checkout/cart"><MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" /></a>
                 </div>
             </div>
         </div>
