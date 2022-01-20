@@ -16,3 +16,23 @@
   margin: 0px 3px;
   background-color: white;
 }
+
+.slideshow {
+  margin: 10px auto;
+  overflow: hidden;
+  max-width: 100%;
+  border: 2px solid yellow;
+  background-color: #fbfbfb;
+}
+.slide {
+  width: 19%;
+  margin: 0.5%;
+  border: 1px solid red;
+  display: inline-block;
+}
+.slide img {
+  width: 100%;
+}
+.slideshowSlider {
+  white-space: nowrap;
+}
