@@ -1,68 +1,13 @@
-const express = require("express");
-const signup = require("../models/user.model");
+const express = require('express');
+
 const router = express.Router();
-const jwt = require("jsonwebtoken");
-const cookie = require("cookie");
 
-const Author = require("../models/product.model");
+const User = require("../models/user.model")
 
-router.get("", async (req, res) => {
-    try {
-        const author = Author.find().lean().exec();
-        const cookie = req.cookies.jwt;
-        return res.render("signup", { cookie });
-    } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" });
-    }
-});
+const authenticate = require('../middlewares/authenticate')
 
-router.post("", async (req, res) => {
-    try {
-        let token;
-        const registerUser = new signup({
-            full_Name: req.body.fullName,
-            email: req.body.Email,
-            password: req.body.Password,
-        });
-
-        console.log("signup working", registerUser)
-        // const checkUser = await signup.findOne({ email: email }).lean().exec();
-        // if (checkUser) {
-        //     console.log("You are already a user");
-        //   alert("You are already a user");
-        // } else {
-        token = await registerUser.generateAuthToken();
-        console.log("Token is being generated");
-
-        res.cookie("jwt", token, {
-            expires: new Date(Date.now() + 6000000000000000000),
-            httpOnly: true,
-        });
-        console.log(cookie);
-
-        const register = await registerUser.save();
-        console.log(register);
-
-        return res.redirect("/");
-        // }
-    } catch (e) {
-        return res.status(500).json({
-            message: e.message,
-            status: "error is in this particular block",
-        });
-    }
-});
-
-router.get("/:token", async (req, res) => {
-    try {
-        const user = await signup
-            .find({ tokens: { $elemMatch: { token: req.params.token } } })
-            .lean()
-            .exec();
-        res.status(200).send(user);
-    } catch (e) {
-        return res.status(500).json({ message: e.message, status: "Failed" });
-    }
-});
-
-module.exports = router;
+router.patch("/update",authenticate,async function (req, res) {
+       const item = await User.findByIdAndUpdate(req.user._id, req.body, {new: true}).lean().exec();
+       return res.status(200).send({item}); 
+    })
+module.exports = router; 
