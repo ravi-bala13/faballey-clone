@@ -43,6 +43,7 @@ body div {
 
 .left-col-options td {
   height: 30px;
+  text-align: left;
   /* border-bottom: 1px solid rgb(152, 157, 161); */
 }
 
