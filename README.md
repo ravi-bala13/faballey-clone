@@ -1,9 +1,7 @@
 # faballey-clone
 
-# Udemy-Clone
-
 faballey.com
-## About Udemy:
+## About Faballry:
 <!-- Udemy is an E-learning web application for online learning and teaching. -->
 
 
