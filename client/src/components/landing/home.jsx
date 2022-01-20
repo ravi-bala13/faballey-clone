@@ -22,10 +22,10 @@ export const Home = () => {
         setIndex((prevIndex) =>
           prevIndex === image.length - 1 ? 0 : prevIndex + 1
         ),
-      5000
+      7000
     );
 
-    return () => {};
+    return () => { };
   }, [index]);
 
   const nextSlide = () => {
@@ -73,7 +73,7 @@ export const Home = () => {
           className={
             index === image.length - 1
               ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8"
+              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
           }
         >
           ⪢
@@ -84,7 +84,7 @@ export const Home = () => {
           className={
             index === 0
               ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8"
+              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
           }
         >
           ⪡

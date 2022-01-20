@@ -28,4 +28,17 @@ router.get("/", async function (req, res) {
     }
 });
 
+router.patch("/updateCart/:userId", async (req, res) => {
+    try {
+        let product = req.body.product;
+        console.log(product);
+
+        let result = await login.findByIdAndUpdate(req.params.userId, { $push: { productId: product } }).lean().exec();
+
+        res.status(200).send(result);
+    } catch (e) {
+        return res.status(500).json({ message: e.message, status: "Failed" })
+    }
+})
+
 module.exports = router;

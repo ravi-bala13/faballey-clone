@@ -89,6 +89,20 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
+            {/* Payment icon */}
+            <div className="flex w-10/12 m-auto">
+                <div className="w-5/12">
+                    <div>
+                        <h1>In case of any concern, Contact Us</h1>
+                    </div>
+                    <div>
+                        <img src="https://static.faballey.com/images/patmentimg.png?v=11.4" alt="icon" />
+                    </div>
+                </div>
+                <div>
+                    <img src="https://static.faballey.com/images/patmentimg.png?v=11.4" alt="icon" />
+                </div>
+            </div>
         </div>
     </>
 }
