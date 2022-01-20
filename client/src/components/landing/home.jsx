@@ -289,7 +289,7 @@ export const Home = () => {
           className={
             newIndex === fresh_pro.length - 5
               ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8"
+              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
           }
         >
           ⪢
@@ -300,7 +300,7 @@ export const Home = () => {
           className={
             newIndex === 0
               ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8"
+              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
           }
         >
           ⪡
@@ -328,7 +328,7 @@ export const Home = () => {
             className={
               deal === dealImages.length - 5
                 ? "hidden"
-                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8"
+                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
             }
           >
             ⪢
@@ -339,7 +339,7 @@ export const Home = () => {
             className={
               deal === 0
                 ? "hidden"
-                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8"
+                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
             }
           >
             ⪡
@@ -394,7 +394,7 @@ export const Home = () => {
             className={
               recommend === recommended_image.length - 5
                 ? "hidden"
-                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8"
+                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
             }
           >
             ⪢
@@ -405,7 +405,7 @@ export const Home = () => {
             className={
               recommend === 0
                 ? "hidden"
-                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8"
+                : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
             }
           >
             ⪡
