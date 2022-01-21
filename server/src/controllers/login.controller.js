@@ -1,37 +1,32 @@
-const express = require("express");
+const express = require('express');
 
-const Login = require("../Models/user.login.model");
+const User = require("../Models/user.model");
 
-const router = express.Router();
-
-router.get("", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
-        const user = await Login.find().populate("product").lean().exec();
+        const user = await User.find().lean().exec();
+        console.log("user:", user);
         return res.status(201).send(user);
     } catch (e) {
-        return res.status(500).send({ message: e.message, status: "failed" });
+        return res.status(500).json({ message: e.message, status: "Failed" })
     }
 });
 
-router.post("", async (req, res) => {
+
+router.delete("/updateCart/:userId", async (req, res) => {
     try {
-        console.log(req.body);
-        const user = await Login.create(req.body);
-        console.log("user:", cart);
-        return res.status(201).send(cart);
+        let product = req.body.productId;
+        console.log(product);
+
+        let result = await login.findByIdAndUpdate(req.params.userId, { $pull: { cartItems: { _id: product } } }).lean().exec();
+
+        res.status(200).send(result);
     } catch (e) {
-        // console.log(e);
-        return res.status(500).send({ message: e.message, status: "failed" });
+        return res.status(500).json({ message: e.message, status: "Failed" })
     }
 });
 
-router.delete("/:id", async (req, res) => {
-    try {
-        const user = await User.findByIdAndDelete(req.params.id).lean().exec();
-        return res.status(201).send(user);
-    } catch (e) {
-        return res.status(500).json({ status: "failed", message: e.message });
-    }
-});
+
+
 
 module.exports = router;
