@@ -1,64 +1,90 @@
-
 const express = require('express');
+const { register, login } = require('./controllers/auth.controller');
+const { body } = require('express-validator');
+const cors = require('cors');
+const app = express();
+const User = require('./models/user.model');
+const passport = require('./configs/passport');
+app.use(express.json());
+app.use(cors());
+app.use(passport.initialize());
+app.use(express.json());
+app.post(
+  '/signup',
+  body('email').custom(async value => {
+    const isEmail = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/.test(value);
 
-const passport = require("./configs/passport")
+    if (!isEmail) {
+      throw new Error('please Enter proper email');
+    }
 
-const { register, login } = require("./controllers/auth.controller")
+    return true;
+  }),
+  body('password').custom(async value => {
+    const isPassword = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(
+      value
+    );
+
+    if (!isPassword) {
+      throw new Error(
+        'please Enter Minimum eight characters, at least one letter, one number and one special character:'
+      );
+    }
+
+    return true;
+  }),
+  register
+);
+app.post('/signin', login);
+app.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['email', 'profile'],
+  })
+);
+
+app.get(
+  '/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/auth/google/failure',
+  }),
+  async function (req, res) {
+    const user = await User.find({ email: req.user.email });
+    console.log(req.user);
+    if (user.length > 0) {
+      res.redirect(`http://localhost:3000/profile/${req.user.user.email}`);
+    } else {
+      res.redirect(`http://localhost:3000/createUser/${req.user.user.email}`);
+    }
+  }
+);
+
+app.get('/auth/google/failure', function (req, res) {
+  return res.send('Something went wrong');
+});
+passport.serializeUser(function ({ user, token }, done) {
+  done(null, { user, token });
+});
+passport.deserializeUser(function (user, done) {
+  done(err, user);
+});
+
+const userController = require('./controllers/user.controller');
+app.use('/users', userController);
+
+app.post("/register", register);
+app.post("/login", login);
+
 const productController = require("./controllers/product.controller")
-const userController = require("./controllers/user.controller")
+// const userController = require("./controllers/user.controller")
 
 const paymentController = require("./controllers/payment.controller")
 const adressController = require("./controllers/address.controller")
-
 
 const bagController = require("./controllers/bag.controller.js");
 const productDetailsController = require("./controllers/productDetails.controller");
 const cartController = require("./controllers/cart.controller");
 
-
-
-const app = express();
-if (process.env.NODE_ENV === "production") {
-  var distDir = __dirname + "/dist/";
-  app.use(express.static(distDir));
-}
-
-app.use(express.json({ extended: false }));
-
-app.use(passport.initialize());
-
-passport.serializeUser(function ({ user, token }, done) {
-  done(null, { user, token });
-});
-
-passport.deserializeUser(function ({ user, token }, done) {
-  done(err, { user, token });
-});
-app.get('/', function (req, res, next) {
-  res.status(200).send("Hi, It works!")
-});
-app.get("/auth/google/failure", function (req, res) {
-  return res.send("Something went wrong");
-})
-
-app.get('/auth/google',
-  passport.authenticate('google', {
-    scope:
-      ['email', 'profile']
-  }
-  ));
-
-app.get('/auth/google/callback',
-  passport.authenticate('google', {
-    failureRedirect: '/auth/google/failure'
-  }), function (req, res) {
-    const { user, token } = req.user
-    return res.redirect('http://localhost:3000' + "?" + token);
-    token = ""
-  });
-
-app.post("/register", register);
-app.post("/login", login);
 app.use("/products", productController)
 
 app.use("/cart", cartController);
@@ -66,11 +92,9 @@ app.use("/bag", bagController);
 
 app.use("/productDetail", productDetailsController);
 
-
 app.use('/payment', paymentController)
 app.use('/address', adressController)
 
 app.use('/users', userController);
-
 
 module.exports = app;
