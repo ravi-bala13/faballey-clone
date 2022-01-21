@@ -199,7 +199,7 @@ export const Home = () => {
           style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
         >
           {image.map((e, i) => (
-            <img className="w-full inline-block" src={e} />
+            <img className="w-full inline-block" src={e} key={i} alt="img" />
           ))}
         </div>
 
@@ -239,7 +239,7 @@ export const Home = () => {
       </div>
 
       <div>
-        <img src="https://img.faballey.com/images/banner/751a510b-deb8-46ab-9013-67aba9f3ec46.gif" />
+        <img src="https://img.faballey.com/images/banner/751a510b-deb8-46ab-9013-67aba9f3ec46.gif" alt="img" />
       </div>
 
       {/* crusing image section */}
@@ -248,8 +248,8 @@ export const Home = () => {
         <p className="m-4">WHAT WE'RE CRUSHING ON</p>
         <div className="flex">
           {crushing_img.map((e, id) => (
-            <div className="flex-1 m-3">
-              <img src={e} className="w-full" />
+            <div className="flex-1 m-3" key={id}>
+              <img src={e} className="w-full" alt="img" />
             </div>
           ))}
         </div>
@@ -257,12 +257,12 @@ export const Home = () => {
 
       <div className="text-center text-2xl font-semibold ">
         <p className="m-4">HOT RIGHT NOW</p>
-        <img src="https://img.faballey.com/images/banner/65463db9-3cb2-44bb-aa35-9a1630b881d0.jpg" />
+        <img src="https://img.faballey.com/images/banner/65463db9-3cb2-44bb-aa35-9a1630b881d0.jpg" alt="img" />
       </div>
 
       <div className="text-center text-2xl font-semibold ">
         <p className="m-4">SIZZLING & SPANKIN' NEW</p>
-        <img src="https://img.faballey.com/images/banner/6aa99031-703e-4b07-8cb6-e844ab2991cc.jpg" />
+        <img src="https://img.faballey.com/images/banner/6aa99031-703e-4b07-8cb6-e844ab2991cc.jpg" alt="img" />
       </div>
 
       {/* making first which have title and price slider with more than one pic */}
@@ -273,8 +273,8 @@ export const Home = () => {
           style={{ transform: `translate(${-newIndex * 20}%, 0)` }}
         >
           {fresh_pro.map((e, i) => (
-            <div className="slide font-semibold">
-              <img src={e.url} className="w-full" />
+            <div className="slide font-semibold" key={i}>
+              <img src={e.url} className="w-full" alt="img" />
               <div>{e.title}</div>
               <div className="mb-2">
                 <span className="text-rose-400 mr-2">{e.newPrice}</span>
@@ -317,8 +317,8 @@ export const Home = () => {
             style={{ transform: `translate(${-deal * 20}%, 0)` }}
           >
             {dealImages.map((e, i) => (
-              <div className="slide">
-                <img src={e} className="w-full" />
+              <div className="slide" key={i}>
+                <img src={e} className="w-full" alt="img" />
               </div>
             ))}
           </div>
@@ -352,9 +352,9 @@ export const Home = () => {
       <div className="text-center text-2xl font-semibold ">
         <p className="m-4">IN THE SPOTLIGHT SECTION</p>
         <div className="flex">
-          {spotlight_img.map((e, id) => (
-            <div className="flex-1 m-2">
-              <img src={e} className="w-full" />
+          {spotlight_img.map((e, id, i) => (
+            <div className="flex-1 m-2" key={i}>
+              <img src={e} className="w-full" alt="img" />
             </div>
           ))}
         </div>
@@ -363,7 +363,7 @@ export const Home = () => {
       {/* party wear 50% off */}
 
       <div className="mt-8">
-        <img src="https://img.faballey.com/images/banner/28d5023b-1489-489c-898f-252213a87f8b.jpg" />
+        <img src="https://img.faballey.com/images/banner/28d5023b-1489-489c-898f-252213a87f8b.jpg" alt="img" />
       </div>
 
       {/* recommended for you section */}
@@ -378,8 +378,8 @@ export const Home = () => {
             style={{ transform: `translate(${-recommend * 20}%, 0)` }}
           >
             {recommended_image.map((e, i) => (
-              <div className="slide font-semibold">
-                <img src={e.url} className="w-full" />
+              <div className="slide font-semibold" key={i}>
+                <img src={e.url} className="w-full" alt="img" />
                 <div>{e.title}</div>
                 <div className="mb-2">
                   <span className="text-rose-400 mr-2">{e.newPrice}</span>
