@@ -8,4 +8,4 @@ const registerSchema = new mongoose.Schema({
     versionKey: false
 })
 
-module.exports = mongoose.model('userSignUp', registerSchema);
+module.exports = mongoose.model('login', registerSchema);
