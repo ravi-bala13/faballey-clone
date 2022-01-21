@@ -1,5 +1,11 @@
 .my-button {
   background-color: rgb(252, 100, 134);
+  color: antiquewhite;
+}
+
+.no-color {
+  background-color: white;
+  color: black;
 }
 /* 
 .stickyda {
