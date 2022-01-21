@@ -21,8 +21,8 @@ body div {
   background-color: black;
   border-radius: 50%;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   color: azure;
   text-align: center;
   padding: 2px;
@@ -73,6 +73,6 @@ body div {
 }
 
 .for-img > img {
-  width: 265px;
-  height: 300px;
+  width: 260px;
+  height: 350px;
 }
