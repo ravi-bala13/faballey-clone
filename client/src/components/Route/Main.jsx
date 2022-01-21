@@ -1,4 +1,3 @@
-import { Navbar } from "../Navbars/Nav/Navbar";
 import { Route, Routes } from "react-router-dom";
 import { Products } from "../Products/Products";
 import { ProductDetails } from "../Products/ProductDetails";
@@ -10,11 +9,13 @@ import { Shipping } from "../shipping/shipping";
 export const Main = () => {
   return (
     <>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<Products />}></Route>
-        <Route path="/products/details" element={<ProductDetails />}></Route>
+        <Route
+          path="/products/details/:id"
+          element={<ProductDetails />}
+        ></Route>
         <Route path="/checkout/cart" element={<Cart />}></Route>
         <Route path="*" element={<Home />}></Route>
       </Routes>

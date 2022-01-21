@@ -7,8 +7,11 @@ import { Input } from "antd";
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 
-export const Nav1 = () => {
+export const Nav1 = ({ handleSignin }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const [email, setEmail] = useState("")
+    const [pwd1, setPwd1] = useState("")
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -21,7 +24,31 @@ export const Nav1 = () => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    const handleSubmit = (e) => {
+        const data = {
+            email: "saas@gnmail.com",
+            pass: "hfkjhsbf",
+        }
+        fetch("http://localhost:2345/signUp")
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("data:", data);
+            });
+        localStorage.setItem("user", JSON.stringify(data));
+        let datas = JSON.parse(localStorage.getItem("user"));
+        console.log(datas);
+    };
+    const face_auth = () => {
+        window.location.href = ""
+
+    }
+
+    const google_auth = () => {
+        window.location.href = ""
+    }
     return <>
+        <div className="w-2/12 m-auto"><button onClick={handleSubmit}>sumbit</button></div>
         <div className="w-full h-10 border border-blue-50 flex">
             <div className="w-2/6 border border-white text-xs font-bold flex mt-3">
                 <span className="text-pink-600 ml-6">EOSS | UPTO 70% Off.</span>
@@ -52,7 +79,7 @@ export const Nav1 = () => {
                             <img className="cursor-pointer" src="https://www.faballey.com/images/loginfb.png" alt="" />
                         </div>
                         <div className="w-5/12">
-                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" onClick={google_auth} />
                         </div>
                     </div>
                     <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setIsModalVisible(false)}>skip</h5>

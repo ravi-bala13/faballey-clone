@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Products.css";
+import { Navbar } from "../Navbars/Nav/Navbar";
 
 export const Products = () => {
-  const circle_bool = false;
   const [prodList, setProdList] = useState([]);
   console.log("prodList:", prodList);
 
@@ -102,6 +102,7 @@ export const Products = () => {
 
   const handlePricesort = (e) => {
     const option = e.target.value;
+    console.log("option:", option);
 
     if (option === "fivehundred") {
       const updatelist = prodList.filter(
@@ -134,10 +135,10 @@ export const Products = () => {
 
   const getProducts = () => {
     try {
-      fetch("https://fakestoreapi.com/products")
+      fetch("http://localhost:2345/products")
         .then((res) => res.json())
         .then((data) => {
-          // console.log("data:", data)
+          // console.log("data:", data);
           setProdList(data);
         });
     } catch (error) {
@@ -146,137 +147,148 @@ export const Products = () => {
   };
 
   return (
-    <div>
-      <div className="container">
-        <div className="left-col">
-          <table className="left-col-options">
-            <tbody>
-              {left_opitons.map((item, i) => (
-                <tr key={i}>
-                  <td className="border-b-2">{item}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="right-col">
-          <div className="top-input-col">
-            <table>
+    <>
+      <Navbar />
+      <div>
+        <div className="container">
+          <div className="left-col">
+            <table className="left-col-options">
               <tbody>
-                <tr>
-                  <td>
-                    <select id="" className="border border-black">
-                      <option value="casual">Casual Wear</option>
-                      <option value="maroon">Party Wear</option>
-                      <option value="yellow">Work wear</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      id=""
-                      onChange={handleColors}
-                      className="border border-black"
-                    >
-                      <option value="all"> All Colors</option>
-                      <option value="red">Red</option>
-                      <option value="green">Green</option>
-                      <option value="blue">Blue</option>
-                      <option value="pink">Pink</option>
-                      <option value="maroon">Maroon</option>
-                      <option value="yellow">Yellow</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select id="" className="border border-black">
-                      <option value="size"> All size</option>
-                      <option value="m">Medium</option>
-                      <option value="s">Small</option>
-                      <option value="l">Large</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      id=""
-                      onChange={handleDiscount}
-                      className="border border-black"
-                    >
-                      <option value="discount"> Discount</option>
-                      <option value="ten">10% - 20%</option>
-                      <option value="twenty">21% - 30%</option>
-                      <option value="thirty">31% - 40%</option>
-                      <option value="forty">41% - 50%</option>
-                      <option value="fifty">51% and above </option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      id=""
-                      onChange={handlePricesort}
-                      className="border border-black"
-                    >
-                      <option value="price"> Price</option>
-                      <option value="fivehundred">₹500 - ₹1000</option>
-                      <option value="onethousand">₹1001- ₹1500</option>
-                      <option value="fifteenhundred">₹1501- ₹2000</option>
-                      <option value="twothousand">₹2001- ₹3000</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <select name="" id="" className="border border-black">
-                      <option value="price">Waist </option>
-                    </select>
-                  </td>
-                  <td>
-                    <select name="" id="" className="border border-black">
-                      <option value="price">Pattern</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select name="" id="" className="border border-black">
-                      <option value="price">Fabric</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select name="" id="" className="border border-black">
-                      <option value="price">Fit</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select name="" id="" className="border border-black">
-                      <option value="price">Collections</option>
-                    </select>
-                  </td>
-                </tr>
+                {left_opitons.map((item, i) => (
+                  <tr key={i}>
+                    <td className="border-b-2">{item}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
+          <div className="right-col">
+            <div className="top-input-col">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <select id="" className="border border-black">
+                        <option value="casual">Casual Wear</option>
+                        <option value="maroon">Party Wear</option>
+                        <option value="yellow">Work wear</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select
+                        id=""
+                        onChange={handleColors}
+                        className="border border-black"
+                      >
+                        <option value="all"> All Colors</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="pink">Pink</option>
+                        <option value="maroon">Maroon</option>
+                        <option value="yellow">Yellow</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select id="" className="border border-black">
+                        <option value="size"> All size</option>
+                        <option value="m">Medium</option>
+                        <option value="s">Small</option>
+                        <option value="l">Large</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select
+                        id=""
+                        onChange={handleDiscount}
+                        className="border border-black"
+                      >
+                        <option value="discount"> Discount</option>
+                        <option value="ten">10% - 20%</option>
+                        <option value="twenty">21% - 30%</option>
+                        <option value="thirty">31% - 40%</option>
+                        <option value="forty">41% - 50%</option>
+                        <option value="fifty">51% and above </option>
+                      </select>
+                    </td>
+                    <td>
+                      <select
+                        id=""
+                        onChange={handlePricesort}
+                        className="border border-black"
+                      >
+                        <option value="price"> Price</option>
+                        <option value="fivehundred">₹500 - ₹1000</option>
+                        <option value="onethousand">₹1001- ₹1500</option>
+                        <option value="fifteenhundred">₹1501- ₹2000</option>
+                        <option value="twothousand">₹2001- ₹3000</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <select name="" id="" className="border border-black">
+                        <option value="price">Waist </option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="" id="" className="border border-black">
+                        <option value="price">Pattern</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="" id="" className="border border-black">
+                        <option value="price">Fabric</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="" id="" className="border border-black">
+                        <option value="price">Fit</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="" id="" className="border border-black">
+                        <option value="price">Collections</option>
+                      </select>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div className="bottom-products">
-            {prodList.map((item) => (
-              <Link to={"/products/details"}>
-                <div className="each-item" key={item.id}>
-                  <div className="for-img">
-                    <img src={item.image} alt="No load" />
-                    {circle_bool ? (
-                      <span className="offer-circle">
-                        50% <br />
-                        OFF
-                      </span>
-                    ) : null}
+            <div className="bottom-products">
+              {prodList.map((item) => (
+                <Link to={`/products/details/${item._id}`}>
+                  <div className="each-item" key={item.id}>
+                    <div className="for-img">
+                      <img src={item.img[0]} alt="No load" />
+                      {item.price >= 1200 ? (
+                        <span className="offer-circle">
+                          50% <br />
+                          OFF
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="for-details">
+                      <p style={{ margin: "0px", color: "black" }}>{item.name}</p>
+                      <p
+                        style={{
+                          margin: "0px",
+                          color: "black",
+                          fontWeight: "bolder",
+                        }}
+                      >
+                        ₹{item.price}
+                      </p>
+                    </div>
                   </div>
-                  <div className="for-details">
-                    <p>{item.title}</p>
-                    <p>₹{item.price}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
