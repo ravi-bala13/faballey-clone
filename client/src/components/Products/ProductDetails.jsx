@@ -37,7 +37,7 @@ export const ProductDetails = () => {
           <button className="my-button border-2 w-48 h-12 mr-5">
             ADD TO BAG
           </button>
-          <button className="my-button border-2 w-44 h-12">
+          <button className="my-button no-color border-2 w-44 h-12">
             ADD TO WISHLIST
           </button>
         </div>
