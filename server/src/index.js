@@ -1,59 +1,77 @@
-require('dotenv').config();
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const passport = require('passport');
-const cookieSession = require('cookie-session')
-// require('./passport');
+
+const passport = require("./configs/passport");
+
+const { body, validationResult } = require("express-validator");
+
+const { register, login } = require('./controllers/auth.controller');
 
 const app = express();
 
-
 app.use(express.json());
-app.use(cookieParser());
 
-const sign = require('./controllers/user.controller');
-const login = require('./controllers/login.controller');
-const auth = require('./middleweres/auth');
-
-app.use('/signup', sign);
-app.use('/login', login);
-
-
-app.use(cookieSession({
-    name: 'jwt',
-    keys: ['key1']
-}))
-
-// Auth middleware that checks if the user is logged in
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
-
-// Initializes passport and passport sessions
 app.use(passport.initialize());
-app.use(passport.session());
 
-// Example protected and unprotected routes
-app.get('/', (req, res) => res.render('/home'))
-app.get('/failed', (req, res) => res.send('You Failed to log in!'))
+passport.serializeUser(function ({ user, token }, done) {
+  done(null, { user, token });
+});
+passport.deserializeUser(function (user, done) {
+  done(err, user);
+});
 
-// In this route you can see that if the user is logged in u can acess his info in: req.user
-// app.get('/home', isLoggedIn, (req, res) => {
-//     res.render("/home", { name: req.user.displayName, email: req.user.emails[0].value })
-// })
 
-// Auth Routes
-app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.post("/register", register)
+app.post("/login", login)
 
-app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
-    function (req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('/home');
-    }
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["email", "profile"],
+  })
 );
+
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    failureRedirect: "/auth/google/failure",
+  }),
+  function (req, res) {
+    return res.status(201).json({ user: req.user.user, token: req.user.token });
+  }
+);
+
+app.get("/auth/google/failure", function (req, res) {
+  return res.send("Something went wrong");
+});
+
+
+
+const productController = require("./controllers/product.controller")
+const userController = require("./controllers/user.controller")
+
+const paymentController = require("./controllers/payment.controller")
+const adressController = require("./controllers/address.controller")
+
+
+const bagController = require("./controllers/bag.controller.js");
+const productDetailsController = require("./controllers/productDetails.controller");
+const cartController = require("./controllers/cart.controller");
+
+
+
+app.use("/products", productController)
+
+app.use("/cart", cartController);
+app.use("/bag", bagController);
+
+app.use("/productDetail", productDetailsController);
+
+
+app.use('/payment', paymentController)
+app.use('/address', adressController)
+
+app.use('/users', userController);
+
 
 module.exports = app;

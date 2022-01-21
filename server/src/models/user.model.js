@@ -1,62 +1,63 @@
-const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
-const validator = require('validator');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+// step 1 :- create the schema for user
 
+const userSchema = new mongoose.Schema(
+  {
+    email: { type: String, required: false },
+    Name: { type: String, required: false },
+    phoneNumber: { type: Number, required: false },
+    address: [{ type: String, required: false }],
 
-
-const registrationSchema = new mongoose.Schema(
-    {
-        full_Name: {
-            type: String,
-            trim: true,
-            minlength: 3
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        password: {
-            type: String,
-            required: true,
-            trim: true,
-            minlength: 5
-        },
-        tokens: [{
-            token: {
-                type: String,
-                required: true
-            }
-        }],
-        cartItems: [{ type: Object, required: false }],
-        wishList: [{ type: Object, required: false }],
+    payment: [{ type: String, required: false }],
+    username: {
+      type: String,
+      required: false,
+      unique: true,
     },
-    {
-        versionKey: false,
-        timestamps: true,
-    }
+    password: {
+      type: String,
+      required: true,
+    },
+    cartItems: [
+      {
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
+        quantity: { type: Number, default: 1 },
+        // price: { type: Number, default: 0 },
+      },
+    ],
+    bagItems: [
+      {
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
+        // price: { type: Number, default: 0 },
+      },
+    ],
+    active: { type: Boolean, default: false },
+  },
+  {
+    versionKey: false,
+    timestamps: true,
+  }
 );
 
-//const generateAuthToken = require('../controllers/signup.controller')
-//Generating token
-registrationSchema.methods.generateAuthToken = async function (req, res) {
-    try {
-        const token = jwt.sign({ _id: this._id }, "mynameissurajkarosiafrommasaischool");
-        this.tokens = this.tokens.concat({ token: token })
-        await this.save();
-        // console.log("This is Your Token "+token);
-        return token;
-    } catch (e) {
-        res.status(500).send({ message: e.message, status: "Inside model JWT" })
-    }
-}
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password")) return next();
 
-// Password hashing
-registrationSchema.pre("save", async function (next) {
-    this.password = await bcrypt.hash(this.password, 10)
-    next();
+  const hash = bcrypt.hashSync(this.password, 10);
+  this.password = hash;
+  return next();
 })
 
-module.exports = mongoose.model("Register", registrationSchema);
+userSchema.methods.checkPassword = function (password) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(password, this.password, function (err, same) {
+      if (err) return reject(err);
+
+      return resolve(same);
+    });
+  });
+};
+
+module.exports = mongoose.model("user", userSchema);
+
+

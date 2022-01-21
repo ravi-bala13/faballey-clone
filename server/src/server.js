@@ -1,11 +1,9 @@
-const app = require('./index');
+const app = require("./index")
 
-
-const connect = require("./configs/db");
-
+const connect = require("./configs/db")
+// require("dotenv").config();
 const port = 2345;
-
 app.listen(port, async function () {
     await connect();
-    console.log(`server is running at http://localhost:${port}`);
+    console.log(`listening on port on ${port} `);
 })
