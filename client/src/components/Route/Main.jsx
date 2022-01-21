@@ -2,7 +2,7 @@ import { Navbar } from "../Navbars/Nav/Navbar";
 import { Route, Routes } from "react-router-dom";
 import { Products } from "../Products/Products";
 import { ProductDetails } from "../Products/ProductDetails";
-import { Home } from "../Landing/home";
+import { Home } from "../landing/home";
 
 import { Footer } from "../Footer/Footer";
 import { Cart } from "../checkout/Cart";
