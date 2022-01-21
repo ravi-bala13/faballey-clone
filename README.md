@@ -14,7 +14,7 @@ faballey.com
 Install-project with git
 
 ```bash
- git clone https://github.com/Sachi4496/Udemy-Clone-Backend.git
+ git clone https://github.com/Sachi4496/faballey-clone.git
 ```
 #### `npm i`
 #### `npm run server`
