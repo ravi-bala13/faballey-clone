@@ -7,8 +7,11 @@ import { Input } from "antd";
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 
-export const Nav1 = () => {
+export const Nav1 = ({ handleSignin }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const [email, setEmail] = useState("")
+    const [pwd1, setPwd1] = useState("")
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -21,6 +24,20 @@ export const Nav1 = () => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let payload = { email, password: pwd1 };
+        handleSignin(payload);
+    };
+    const face_auth = () => {
+        window.location.href = ""
+
+    }
+
+    const google_auth = () => {
+        window.location.href = "http://localhost:2345/auth/google"
+    }
     return <>
         <div className="w-full h-10 border border-blue-50 flex">
             <div className="w-2/6 border border-white text-xs font-bold flex mt-3">
@@ -52,7 +69,7 @@ export const Nav1 = () => {
                             <img className="cursor-pointer" src="https://www.faballey.com/images/loginfb.png" alt="" />
                         </div>
                         <div className="w-5/12">
-                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" onClick={google_auth} />
                         </div>
                     </div>
                     <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setIsModalVisible(false)}>skip</h5>
