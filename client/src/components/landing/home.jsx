@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./home.css";
+import { Navbar } from "../Navbars/Nav/Navbar";
 
 export const Home = () => {
   const [index, setIndex] = useState(0);
@@ -144,7 +145,7 @@ export const Home = () => {
       7000
     );
 
-    return () => { };
+    return () => {};
   }, [index]);
 
   const nextSlide = () => {
@@ -184,149 +185,47 @@ export const Home = () => {
   };
 
   return (
-    <div>
-      <div className="border flex text-xs font-semibold text-center w-full">
-        <div className="border flex-1 py-2 bg-red-50">Party '21 Collection</div>
-        <div className="border flex-1 py-2 bg-red-200">EOSS | UPTO 70% OFF</div>
-        <div className="border flex-1 py-1 bg-red-50">
-          📢PSA: Free shipping on orders above ₹ 3000
-        </div>
-      </div>
-
-      <div className="my-2 mx-auto overflow-hidden w-full relative ">
-        <div
-          className="whitespace-nowrap transition ease-linear duration-1000"
-          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-        >
-          {image.map((e, i) => (
-            <img className="w-full inline-block" src={e} key={i} alt="img" />
-          ))}
-        </div>
-
-        <div className="slideshowDots text-center absolute bottom-0 left-1/2 ">
-          {image.map((_, id) => (
-            <div
-              key={id}
-              className={index === id ? "slideshowDotActive" : "slideshowDot"}
-              onClick={() => {
-                setIndex(id);
-              }}
-            ></div>
-          ))}
-        </div>
-
-        <div
-          onClick={nextSlide}
-          className={
-            index === image.length - 1
-              ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
-          }
-        >
-          ⪢
-        </div>
-
-        <div
-          onClick={prevSlide}
-          className={
-            index === 0
-              ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
-          }
-        >
-          ⪡
-        </div>
-      </div>
-
+    <>
+      <Navbar />
       <div>
-        <img src="https://img.faballey.com/images/banner/751a510b-deb8-46ab-9013-67aba9f3ec46.gif" alt="img" />
-      </div>
-
-      {/* crusing image section */}
-
-      <div className="text-center text-2xl font-semibold ">
-        <p className="m-4">WHAT WE'RE CRUSHING ON</p>
-        <div className="flex">
-          {crushing_img.map((e, id) => (
-            <div className="flex-1 m-3" key={id}>
-              <img src={e} className="w-full" alt="img" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="text-center text-2xl font-semibold ">
-        <p className="m-4">HOT RIGHT NOW</p>
-        <img src="https://img.faballey.com/images/banner/65463db9-3cb2-44bb-aa35-9a1630b881d0.jpg" alt="img" />
-      </div>
-
-      <div className="text-center text-2xl font-semibold ">
-        <p className="m-4">SIZZLING & SPANKIN' NEW</p>
-        <img src="https://img.faballey.com/images/banner/6aa99031-703e-4b07-8cb6-e844ab2991cc.jpg" alt="img" />
-      </div>
-
-      {/* making first which have title and price slider with more than one pic */}
-
-      <div className="slideshow relative">
-        <div
-          className="slideshowSlider transition ease-linear duration-1000 "
-          style={{ transform: `translate(${-newIndex * 20}%, 0)` }}
-        >
-          {fresh_pro.map((e, i) => (
-            <div className="slide font-semibold" key={i}>
-              <img src={e.url} className="w-full" alt="img" />
-              <div>{e.title}</div>
-              <div className="mb-2">
-                <span className="text-rose-400 mr-2">{e.newPrice}</span>
-                <span className="line-through">{e.oldPrice} </span>
-              </div>
-            </div>
-          ))}
+        <div className="border flex text-xs font-semibold text-center w-full">
+          <div className="border flex-1 py-2 bg-red-50">
+            Party '21 Collection
+          </div>
+          <div className="border flex-1 py-2 bg-red-200">
+            EOSS | UPTO 70% OFF
+          </div>
+          <div className="border flex-1 py-1 bg-red-50">
+            📢PSA: Free shipping on orders above ₹ 3000
+          </div>
         </div>
 
-        <div
-          onClick={bottomSlideRight}
-          className={
-            newIndex === fresh_pro.length - 5
-              ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
-          }
-        >
-          ⪢
-        </div>
-
-        <div
-          onClick={bottomSlideLeft}
-          className={
-            newIndex === 0
-              ? "hidden"
-              : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
-          }
-        >
-          ⪡
-        </div>
-      </div>
-
-      {/* deals you dont want to miss */}
-
-      <div className="text-center text-2xl font-semibold ">
-        <p className="m-4">DEALS YOU DON'T WANT TO MISS</p>
-        <div className="slideshow relative">
+        <div className="my-2 mx-auto overflow-hidden w-full relative ">
           <div
-            className="slideshowSlider transition ease-linear duration-1000 "
-            style={{ transform: `translate(${-deal * 20}%, 0)` }}
+            className="whitespace-nowrap transition ease-linear duration-1000"
+            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
           >
-            {dealImages.map((e, i) => (
-              <div className="slide" key={i}>
-                <img src={e} className="w-full" alt="img" />
-              </div>
+            {image.map((e, i) => (
+              <img className="w-full inline-block" src={e} key={i} alt="img" />
+            ))}
+          </div>
+
+          <div className="slideshowDots text-center absolute bottom-0 left-1/2 ">
+            {image.map((_, id) => (
+              <div
+                key={id}
+                className={index === id ? "slideshowDotActive" : "slideshowDot"}
+                onClick={() => {
+                  setIndex(id);
+                }}
+              ></div>
             ))}
           </div>
 
           <div
-            onClick={dealNext}
+            onClick={nextSlide}
             className={
-              deal === dealImages.length - 5
+              index === image.length - 1
                 ? "hidden"
                 : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
             }
@@ -335,9 +234,9 @@ export const Home = () => {
           </div>
 
           <div
-            onClick={dealPrev}
+            onClick={prevSlide}
             className={
-              deal === 0
+              index === 0
                 ? "hidden"
                 : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
             }
@@ -345,39 +244,51 @@ export const Home = () => {
             ⪡
           </div>
         </div>
-      </div>
 
-      {/* in the spotlight section */}
-
-      <div className="text-center text-2xl font-semibold ">
-        <p className="m-4">IN THE SPOTLIGHT SECTION</p>
-        <div className="flex">
-          {spotlight_img.map((e, id, i) => (
-            <div className="flex-1 m-2" key={i}>
-              <img src={e} className="w-full" alt="img" />
-            </div>
-          ))}
+        <div>
+          <img
+            src="https://img.faballey.com/images/banner/751a510b-deb8-46ab-9013-67aba9f3ec46.gif"
+            alt="img"
+          />
         </div>
-      </div>
 
-      {/* party wear 50% off */}
+        {/* crusing image section */}
 
-      <div className="mt-8">
-        <img src="https://img.faballey.com/images/banner/28d5023b-1489-489c-898f-252213a87f8b.jpg" alt="img" />
-      </div>
+        <div className="text-center text-2xl font-semibold ">
+          <p className="m-4">WHAT WE'RE CRUSHING ON</p>
+          <div className="flex">
+            {crushing_img.map((e, id) => (
+              <div className="flex-1 m-3" key={id}>
+                <img src={e} className="w-full" alt="img" />
+              </div>
+            ))}
+          </div>
+        </div>
 
-      {/* recommended for you section */}
+        <div className="text-center text-2xl font-semibold ">
+          <p className="m-4">HOT RIGHT NOW</p>
+          <img
+            src="https://img.faballey.com/images/banner/65463db9-3cb2-44bb-aa35-9a1630b881d0.jpg"
+            alt="img"
+          />
+        </div>
 
-      <div className="bg-gray-50 mt-10">
-        <p className="m-4 py-4 text-center text-2xl font-semibold">
-          RECOMMENDED FOR YOU
-        </p>
+        <div className="text-center text-2xl font-semibold ">
+          <p className="m-4">SIZZLING & SPANKIN' NEW</p>
+          <img
+            src="https://img.faballey.com/images/banner/6aa99031-703e-4b07-8cb6-e844ab2991cc.jpg"
+            alt="img"
+          />
+        </div>
+
+        {/* making first which have title and price slider with more than one pic */}
+
         <div className="slideshow relative">
           <div
             className="slideshowSlider transition ease-linear duration-1000 "
-            style={{ transform: `translate(${-recommend * 20}%, 0)` }}
+            style={{ transform: `translate(${-newIndex * 20}%, 0)` }}
           >
-            {recommended_image.map((e, i) => (
+            {fresh_pro.map((e, i) => (
               <div className="slide font-semibold" key={i}>
                 <img src={e.url} className="w-full" alt="img" />
                 <div>{e.title}</div>
@@ -390,9 +301,9 @@ export const Home = () => {
           </div>
 
           <div
-            onClick={recommendeNext}
+            onClick={bottomSlideRight}
             className={
-              recommend === recommended_image.length - 5
+              newIndex === fresh_pro.length - 5
                 ? "hidden"
                 : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
             }
@@ -401,9 +312,9 @@ export const Home = () => {
           </div>
 
           <div
-            onClick={recommendPrevious}
+            onClick={bottomSlideLeft}
             className={
-              recommend === 0
+              newIndex === 0
                 ? "hidden"
                 : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
             }
@@ -411,7 +322,116 @@ export const Home = () => {
             ⪡
           </div>
         </div>
+
+        {/* deals you dont want to miss */}
+
+        <div className="text-center text-2xl font-semibold ">
+          <p className="m-4">DEALS YOU DON'T WANT TO MISS</p>
+          <div className="slideshow relative">
+            <div
+              className="slideshowSlider transition ease-linear duration-1000 "
+              style={{ transform: `translate(${-deal * 20}%, 0)` }}
+            >
+              {dealImages.map((e, i) => (
+                <div className="slide" key={i}>
+                  <img src={e} className="w-full" alt="img" />
+                </div>
+              ))}
+            </div>
+
+            <div
+              onClick={dealNext}
+              className={
+                deal === dealImages.length - 5
+                  ? "hidden"
+                  : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
+              }
+            >
+              ⪢
+            </div>
+
+            <div
+              onClick={dealPrev}
+              className={
+                deal === 0
+                  ? "hidden"
+                  : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
+              }
+            >
+              ⪡
+            </div>
+          </div>
+        </div>
+
+        {/* in the spotlight section */}
+
+        <div className="text-center text-2xl font-semibold ">
+          <p className="m-4">IN THE SPOTLIGHT SECTION</p>
+          <div className="flex">
+            {spotlight_img.map((e, id, i) => (
+              <div className="flex-1 m-2" key={i}>
+                <img src={e} className="w-full" alt="img" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* party wear 50% off */}
+
+        <div className="mt-8">
+          <img
+            src="https://img.faballey.com/images/banner/28d5023b-1489-489c-898f-252213a87f8b.jpg"
+            alt="img"
+          />
+        </div>
+
+        {/* recommended for you section */}
+
+        <div className="bg-gray-50 mt-10">
+          <p className="m-4 py-4 text-center text-2xl font-semibold">
+            RECOMMENDED FOR YOU
+          </p>
+          <div className="slideshow relative">
+            <div
+              className="slideshowSlider transition ease-linear duration-1000 "
+              style={{ transform: `translate(${-recommend * 20}%, 0)` }}
+            >
+              {recommended_image.map((e, i) => (
+                <div className="slide font-semibold" key={i}>
+                  <img src={e.url} className="w-full" alt="img" />
+                  <div>{e.title}</div>
+                  <div className="mb-2">
+                    <span className="text-rose-400 mr-2">{e.newPrice}</span>
+                    <span className="line-through">{e.oldPrice} </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div
+              onClick={recommendeNext}
+              className={
+                recommend === recommended_image.length - 5
+                  ? "hidden"
+                  : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 right-6 w-8 h-8 cursor-pointer"
+              }
+            >
+              ⪢
+            </div>
+
+            <div
+              onClick={recommendPrevious}
+              className={
+                recommend === 0
+                  ? "hidden"
+                  : "nextButton text-lg bg-white rounded-md text-center font-semibold absolute top-1/2 left-6 w-8 h-8 cursor-pointer"
+              }
+            >
+              ⪡
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

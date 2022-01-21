@@ -1,11 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const registerSchema = new mongoose.Schema({
-    email: { type: String, required: true, unique: true },
+const registerSchema = new mongoose.Schema(
+  {
+    mobile: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-}, {
+  },
+  {
     timestamps: true,
-    versionKey: false
-})
+    versionKey: false,
+  }
+);
 
-module.exports = mongoose.model('signUp', registerSchema)
+module.exports = mongoose.model("signUp", registerSchema);

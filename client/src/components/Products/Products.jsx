@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Products.css";
 
 export const Products = () => {
-  const circle_bool = false;
   const [prodList, setProdList] = useState([]);
   console.log("prodList:", prodList);
 
@@ -102,6 +101,7 @@ export const Products = () => {
 
   const handlePricesort = (e) => {
     const option = e.target.value;
+    console.log("option:", option);
 
     if (option === "fivehundred") {
       const updatelist = prodList.filter(
@@ -134,10 +134,10 @@ export const Products = () => {
 
   const getProducts = () => {
     try {
-      fetch("https://fakestoreapi.com/products")
+      fetch("http://localhost:2345/products")
         .then((res) => res.json())
         .then((data) => {
-          // console.log("data:", data)
+          // console.log("data:", data);
           setProdList(data);
         });
     } catch (error) {
@@ -255,11 +255,11 @@ export const Products = () => {
 
           <div className="bottom-products">
             {prodList.map((item) => (
-              <Link to={"/products/details"}>
+              <Link to={`/products/details/${item._id}`}>
                 <div className="each-item" key={item.id}>
                   <div className="for-img">
-                    <img src={item.image} alt="No load" />
-                    {circle_bool ? (
+                    <img src={item.img[0]} alt="No load" />
+                    {item.price >= 1200 ? (
                       <span className="offer-circle">
                         50% <br />
                         OFF
@@ -267,8 +267,16 @@ export const Products = () => {
                     ) : null}
                   </div>
                   <div className="for-details">
-                    <p>{item.title}</p>
-                    <p>₹{item.price}</p>
+                    <p style={{ margin: "0px", color: "black" }}>{item.name}</p>
+                    <p
+                      style={{
+                        margin: "0px",
+                        color: "black",
+                        fontWeight: "bolder",
+                      }}
+                    >
+                      ₹{item.price}
+                    </p>
                   </div>
                 </div>
               </Link>
