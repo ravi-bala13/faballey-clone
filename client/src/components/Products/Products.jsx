@@ -145,13 +145,6 @@ export const Products = () => {
     }
   };
 
-  const dataIsThere = () => {
-    fetch("http://localhost:2345/products")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data is available in product page:", data)
-      });
-  }
   return (
     <div>
       <div className="container">
