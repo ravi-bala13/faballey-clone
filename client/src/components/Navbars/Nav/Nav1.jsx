@@ -36,7 +36,7 @@ export const Nav1 = ({ handleSignin }) => {
     }
 
     const google_auth = () => {
-        window.location.href = "http://localhost:2345/auth/google"
+        window.location.href = ""
     }
     return <>
         <div className="w-full h-10 border border-blue-50 flex">
