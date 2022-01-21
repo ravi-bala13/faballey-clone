@@ -1,17 +1,25 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
+
+const newToken = user => {
+    return jwt.sign({ user: user }, 'masaischool');
+};
+
+const authenticate = require('../middlewares/authenticate');
+
+const User = require('../models/user.model');
 
 const router = express.Router();
 
-const User = require("../models/user.model")
+router.post('', async (req, res) => {
+    const user = await User.create(req.body);
+    const token = newToken(user);
+    return res.status(201).json({ token: token });
+});
 
-const authenticate = require('../middlewares/authenticate')
-
-router.patch("/update", authenticate, async function (req, res) {
-    const item = await User.findByIdAndUpdate(req.user._id, req.body, { new: true }).lean().exec();
-    return res.status(200).send({ item });
-})
-router.get("/find", authenticate, async function (req, res) {
-    const item = await User.findByIdAndUpdate(req.user._id, req.body, { new: true }).lean().exec();
-    return res.status(200).send({ item });
-})
-module.exports = router; 
+router.get('/profile/:email', async (req, res) => {
+    const user = await User.find({ email: req.params.email }).exec();
+    const token = newToken(user[0]);
+    return res.status(200).json({ user: user[0], token });
+});
+module.exports = router;
