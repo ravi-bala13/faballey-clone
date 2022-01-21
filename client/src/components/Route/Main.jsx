@@ -6,6 +6,7 @@ import { Home } from "../landing/home";
 
 import { Footer } from "../Footer/Footer";
 import { Cart } from "../checkout/Cart";
+import { Shipping } from "../shipping/shipping";
 export const Main = () => {
   return (
     <>
