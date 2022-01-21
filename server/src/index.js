@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 
 const passport = require("./configs/passport");
 
 const { body, validationResult } = require("express-validator");
 
-const { register, login } = require('./controllers/auth.controller');
+const { register, login } = require("./controllers/auth.controller");
 
 const app = express();
 
@@ -19,10 +19,8 @@ passport.deserializeUser(function (user, done) {
   done(err, user);
 });
 
-
-app.post("/register", register)
-app.post("/login", login)
-
+app.post("/register", register);
+app.post("/login", login);
 
 app.get(
   "/auth/google",
@@ -45,33 +43,26 @@ app.get("/auth/google/failure", function (req, res) {
   return res.send("Something went wrong");
 });
 
+const productController = require("./controllers/product.controller");
+const userController = require("./controllers/user.controller");
 
-
-const productController = require("./controllers/product.controller")
-const userController = require("./controllers/user.controller")
-
-const paymentController = require("./controllers/payment.controller")
-const adressController = require("./controllers/address.controller")
-
+const paymentController = require("./controllers/payment.controller");
+const adressController = require("./controllers/address.controller");
 
 const bagController = require("./controllers/bag.controller.js");
 const productDetailsController = require("./controllers/productDetails.controller");
 const cartController = require("./controllers/cart.controller");
 
-
-
-app.use("/products", productController)
+app.use("/products", productController);
 
 app.use("/cart", cartController);
 app.use("/bag", bagController);
 
 app.use("/productDetail", productDetailsController);
 
+app.use("/payment", paymentController);
+app.use("/address", adressController);
 
-app.use('/payment', paymentController)
-app.use('/address', adressController)
-
-app.use('/users', userController);
-
+app.use("/users", userController);
 
 module.exports = app;
