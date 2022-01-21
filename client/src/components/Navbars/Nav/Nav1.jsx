@@ -26,9 +26,13 @@ export const Nav1 = ({ handleSignin }) => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        let payload = { email, password: pwd1 };
-        handleSignin(payload);
+        const data = {
+            email: "saas@gnmail.com",
+            pass: "hfkjhsbf",
+        }
+        localStorage.setItem("user", JSON.stringify(data));
+        let datas = JSON.parse(localStorage.getItem("user"));
+        console.log(datas);
     };
     const face_auth = () => {
         window.location.href = ""
@@ -39,6 +43,7 @@ export const Nav1 = ({ handleSignin }) => {
         window.location.href = ""
     }
     return <>
+        <button onClick={handleSubmit}>sumbit</button>
         <div className="w-full h-10 border border-blue-50 flex">
             <div className="w-2/6 border border-white text-xs font-bold flex mt-3">
                 <span className="text-pink-600 ml-6">EOSS | UPTO 70% Off.</span>
