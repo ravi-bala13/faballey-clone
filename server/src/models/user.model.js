@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+const bcryptjs = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
-    email: { type: String, required: false, unique: true },
+    email: { type: String, required: false },
     Name: { type: String, required: false },
     phoneNumber: { type: Number, required: false },
     address: [{ type: String, required: false }],
@@ -22,13 +22,11 @@ const userSchema = new mongoose.Schema(
       {
         productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
         quantity: { type: Number, default: 1 },
-        // price: { type: Number, default: 0 },
       },
     ],
     bagItems: [
       {
         productId: { type: mongoose.Schema.Types.ObjectId, ref: "product" },
-        // price: { type: Number, default: 0 },
       },
     ],
     active: { type: Boolean, default: false },
@@ -39,22 +37,25 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// create and update
 userSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
 
-  const hash = bcrypt.hashSync(this.password, 10);
+  const hash = bcryptjs.hashSync(this.password, 8);
   this.password = hash;
+
   return next();
 });
 
 userSchema.methods.checkPassword = function (password) {
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, this.password, function (err, same) {
-      if (err) return reject(err);
+  const match = bcryptjs.compareSync(password, this.password);
 
-      return resolve(same);
-    });
-  });
+  return match;
 };
 
+// step 2 :- connect the schema to the users collection
+const User = mongoose.model("user", userSchema); // users
+
 module.exports = mongoose.model("user", userSchema);
+
+module.exports = User;
