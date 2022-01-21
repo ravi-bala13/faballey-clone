@@ -39,70 +39,109 @@ export const Footer = () => {
                 <div className="w-1/5 border-r border-black">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="/">About Us</a></li>
-                        <li><a href="/">Careers</a></li>
-                        <li><a href="/">Contact Us</a></li>
-                        <li><a href="/">FabAlley CSR</a></li>
-                        <li><a href="" target="_blank">Our Blog</a></li>
+                        <li><a className="text-black" href="/">About Us</a></li>
+                        <li><a className="text-black" href="/">Careers</a></li>
+                        <li><a className="text-black" href="/">Contact Us</a></li>
+                        <li><a className="text-black" href="/">FabAlley CSR</a></li>
+                        <li><a className="text-black" href="" target="_blank">Our Blog</a></li>
                     </ul>
                 </div>
                 <div className="flex flex-col w-2/5 border-r border-black">
                     <div className="w-20 m-auto">
                         <h3>Help</h3>
                     </div>
-                    <div className="flex w-full">
-                        <ul>
-                            <li><a href="/">Order Status</a></li>
-                            <li><a href="/">Returns &amp; Exchange</a></li>
-                            <li><a href="/">International Orders</a></li>
-                            <li><a href="/">Terms And Conditions</a></li>
-                            <li><a href="/">Privacy Policy</a></li>
-                            <li><a href="/">Investor Relations</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="/">FAQs</a></li>
-                            <li><a href="/">Cancellation policy</a></li>
-                            <li><a href="/">Shipping Policy</a></li>
-                            <li><a href="/">Ordering &amp; Payment</a></li>
-                            <li><a href="/">Size Guide</a></li>
-                            <li><a href="/">Store Locator</a></li>
-                            <li><a href="/">Wholesale Enquiry</a></li>
-                        </ul>
+                    <div className="flex w-9/12 m-auto">
+                        <div className="w-6/12">
+                            <ul>
+                                <li><a className="text-black" href="/">Order Status</a></li>
+                                <li><a className="text-black" href="/">Returns &amp; Exchange</a></li>
+                                <li><a className="text-black" href="/">International Orders</a></li>
+                                <li><a className="text-black" href="/">Terms And Conditions</a></li>
+                                <li><a className="text-black" href="/">Privacy Policy</a></li>
+                                <li><a className="text-black" href="/">Investor Relations</a></li>
+                            </ul>
+                        </div>
+                        <div className="w-6/12">
+                            <ul>
+                                <li><a className="text-black" href="/">FAQs</a></li>
+                                <li><a className="text-black" href="/">Cancellation policy</a></li>
+                                <li><a className="text-black" href="/">Shipping Policy</a></li>
+                                <li><a className="text-black" href="/">Ordering &amp; Payment</a></li>
+                                <li><a className="text-black" href="/">Size Guide</a></li>
+                                <li><a className="text-black" href="/">Store Locator</a></li>
+                                <li><a className="text-black" href="/">Wholesale Enquiry</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div className="w-2/5">
-                    <h4>Newsletter Signup</h4>
-                    <div>
-                        <input type="text" id="txtnewsLetter" placeholder="Enter Email Address" />
-                        <a href="/" id="submitnewsletter" >Subscribe</a>
+                <div className="w-2/5 flex flex-col">
+                    <div className="w-5/12 m-auto">
+                        <h4 className="text-xl font-medium">Newsletter Signup</h4>
                     </div>
-                    <div class="ftrsocialBox">
-                        <h4>Connect With Us</h4>
-                        <div>
-                            <span>
-                                <h4>Facbook</h4>
-                                <h4>Instagram</h4>
-                                <h4>Twitter</h4>
-                                <h4>YouTube</h4>
+                    <div className="w-11/12 m-auto mt-2">
+                        <input type="text" className="border border-black w-7/12 h-10" placeholder="Enter Email Address" />
+                        <a href="/" className="text-white font-bold px-8 py-3 bg-slate-800 ml-2 border border-black" >Subscribe</a>
+                    </div>
+                    <div className="w-full flex flex-col">
+                        <div className="w-5/12 m-auto mt-2">
+                            <h4 className="text-xl font-medium">Connect With Us</h4>
+                        </div>
+                        <div className="w-11/12 m-auto mt-2">
+                            <span className="w-9/12 m-auto flex">
+                                <h4 className="px-2 py-2 bg-slate-800 ml-2 text-white">Facbook</h4>
+                                <h4 className="px-2 py-2 bg-slate-800 ml-2 text-white">Instagram</h4>
+                                <h4 className="px-2 py-2 bg-slate-800 ml-2 text-white">Twitter</h4>
+                                <h4 className="px-2 py-2 bg-slate-800 ml-2 text-white">YouTube</h4>
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
             {/* Payment icon */}
-            <div className="flex w-10/12 m-auto">
-                <div className="w-5/12">
-                    <div>
-                        <h1>In case of any concern, Contact Us</h1>
+            <div className="flex w-10/12 m-auto justify-evenly mt-6">
+                <div className="w-8/12 flex flex-col">
+                    <div className="w-full">
+                        <h1 className="font-bold text-xl">In case of any concern, Contact Us</h1>
                     </div>
-                    <div>
-                        <img src="https://static.faballey.com/images/patmentimg.png?v=11.4" alt="icon" />
+                    <div className="flex w-full justify-between mt-4">
+                        <div className="w-5/12 border-r border-black pr-4">
+                            <h4>HEAD OFFICE ADDRESS:</h4>
+                            <p>High Street Essentials Pvt Ltd</p>
+                            <p>C-11, Sector 7, Noida, UP- 201301, India</p>
+                            <p>Customer Care:  +91-8929987349 / 0120-6850262</p>
+                        </div>
+                        <div className="w-5/12">
+                            <h4>RETURN ADDRESS:</h4>
+                            <p>High Street Essentials Pvt Ltd</p>
+                            <p>C-5, Sector 1, Noida</p>
+                            <p>UP- 201301, India</p>
+                        </div>
                     </div>
                 </div>
-                <div>
+                <div className="4/12 mt-6">
                     <img src="https://static.faballey.com/images/patmentimg.png?v=11.4" alt="icon" />
                 </div>
             </div>
+            <div className="w-10/12 m-auto mt-4"> <hr /></div>
+            <div className="w-10/12 m-auto mt-4">
+                <div>
+                    <h1 className="text-sm mt-4">POPULAR SEARCHES:</h1>
+                </div>
+                <div>
+                    <p className="text-sm mt-4">
+                        New Arrivals | Western Clothing | Tops |Dresses | Skirts |Bottoms | Denim | Jackets & Blazers | Shrugs | Curve | Accessories | Sale | Party Wear | Work Wear | Vacation Wear | Casual Wear | Crop Tops | Maxi Tops | OffShoulder Tops |
+                        Cold Shoulder Tops | Ruffled Tops | Bell Sleeve Tops  | Floral Tops | Maxi Dresses | Skater Dresses | Mini Dresses | OffShoulder Dresses | Cold Shoulder Dresses | Floral Dresses | LBD | Jumpsuits | Plus Size Dresses | Plus Size Tops | Winter Wear | Leggings |
+                        JeggingsWomen's Loungewear | Wholesale Enquiries
+                    </p>
+                </div>
+            </div>
+            <div className="w-10/12 m-auto mt-4"> <hr /></div>
+            <div className="w-10/12 m-auto mt-6">
+                <div className="w-3/12 m-auto">
+                    <p className="text-sm pb-2">© 2022 FabAlley.com. All Rights Reserved</p>
+                </div>
+            </div>
         </div>
+
     </>
 }

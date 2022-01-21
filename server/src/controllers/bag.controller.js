@@ -2,84 +2,38 @@ const express = require("express");
 
 const Bag = require("../models/bag.model");
 
-const User = require("../models/user.model");
-
 const Product = require("../models/product.model");
 
-const authenticate = require('../middlewares/authenticate')
 const router = express.Router();
 
-router.get("/", authenticate, async (req, res) => {
+router.get("", async (req, res) => {
   try {
-    let userId = req.user._id
-    let user = await User.findById(userId);
-
-    let bag = user.bagItems;
-
-    let prodArr = [];
-    for (let i = 0; i < bag.length; i++) {
-      let product = await Product.findById(bag[i].productId);
-      prodArr.push([product, 1]);
-    }
-
-    return res.send({ items: prodArr });
-  } catch (err) {
-    res.send(err.message);
+    const bag = await Bag.find().populate("product").lean().exec();
+    return res.status(201).send(cart);
+  } catch (e) {
+    return res.status(500).send({ message: e.message, status: "failed" });
   }
 });
 
-router.post("/add", authenticate, async (req, res) => {
-  let { prodId } = req.body;
-  let userId = req.user._id
-
-  let user = await User.findById(userId).lean().exec();
-  console.log("user", user)
-  let bag = user.bagItems;
-  if (bag.length == 0) {
-    user = await User.findByIdAndUpdate(
-      userId,
-      { bagItems: [...bag, { productId: prodId }] },
-      { new: true }
-    )
-      .lean()
-      .exec();
-    return res.json(user);
+router.post("", async (req, res) => {
+  try {
+    console.log(req.body);
+    const bag = await Bag.create(req.body);
+    console.log("bag:", bag);
+    return res.status(201).send(bag);
+  } catch (e) {
+    // console.log(e);
+    return res.status(500).send({ message: e.message, status: "failed" });
   }
-  for (let i = 0; i < bag.length; i++) {
-    if (bag[i].productId == prodId) {
-      return res.send("Item Already Added in your bag");
-    }
-  }
-
-  user = await User.findByIdAndUpdate(
-    userId,
-    { bagItems: [...bag, { productId: prodId }] },
-    { new: true }
-  )
-    .lean()
-    .exec();
-  return res.json(user);
 });
 
-router.post("/deleteItem/", authenticate, async (req, res) => {
-  let { prodId } = req.body;
-  let userId = req.user._id
-  let user = await User.findById(userId).lean().exec();
-
-  let bag = user.bagItems;
-
-  let newBag = bag.filter((item) => {
-    return item.productId != prodId;
-  });
-
-  user = await User.findByIdAndUpdate(
-    userId,
-    { bagItems: newBag },
-    { new: true }
-  )
-    .lean()
-    .exec();
-  return res.json(user);
+router.delete("/:id", async (req, res) => {
+  try {
+    const bag = await Bag.findByIdAndDelete(req.params.id).lean().exec();
+    return res.status(201).send(bag);
+  } catch (e) {
+    return res.status(500).json({ status: "failed", message: e.message });
+  }
 });
 
 module.exports = router;
