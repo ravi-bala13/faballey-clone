@@ -13,7 +13,7 @@ router.post("", async (req, res) => {
         if (productByMobile) {
             throw new Error("Please try with a different email address");
         }
-        // return true;
+        return true;
 
         const user = await User.create(req.body);
         console.log("user:", user);
