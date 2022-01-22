@@ -39,6 +39,7 @@ export const Nav1 = ({ handleSignin }) => {
         setFormErrors(validate(formValues));
         setIsSubmit(true);
     };
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         console.log(formErrors);
@@ -52,8 +53,15 @@ export const Nav1 = ({ handleSignin }) => {
                 )
             });
             setIsModalVisible(false);
+            // getData();
         }
     }, [formErrors]);
+    // const getData = () => {
+    //     fetch(`http://localhost:2345/users`)
+    //         .then((d) => d.json())
+    //         .then((res) => setData(res));
+    // };
+    // console.log("data fetch", data);
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;

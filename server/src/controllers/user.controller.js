@@ -6,14 +6,14 @@ const router = express.Router();
 
 router.post("", async (req, res) => {
     try {
-        console.log("from signup:", req.body);
-        const productByMobile = await User.findOne({ email: req.body.email })
-            .lean()
-            .exec();
-        if (productByMobile) {
-            throw new Error("Please try with a different email address");
-        }
-        return true;
+        // console.log("from signup:", req.body);
+        // // const productByMobile = await User.findOne({ email: req.body.email })
+        // //     .lean()
+        // //     .exec();
+        // // if (productByMobile) {
+        // //     throw new Error("Please try with a different email address");
+        // // }
+        // // return true;
 
         const user = await User.create(req.body);
         console.log("user:", user);
@@ -25,7 +25,7 @@ router.post("", async (req, res) => {
 });
 router.get("/", async (req, res) => {
     try {
-        const user = await User.find().lean().exec();
+        const user = await User.findOne({ email: req.body.email }).lean().exec();
         // console.log("user:", user);
         return res.status(201).send(user);
     } catch (e) {
