@@ -53,15 +53,22 @@ export const Nav1 = ({ handleSignin }) => {
                 )
             });
             setIsModalVisible(false);
-            // getData();
+            getData();
         }
     }, [formErrors]);
-    // const getData = () => {
-    //     fetch(`http://localhost:2345/users`)
-    //         .then((d) => d.json())
-    //         .then((res) => setData(res));
-    // };
-    // console.log("data fetch", data);
+    // login
+    const getData = async () => {
+        let res = await fetch(`http://localhost:2345/users/login`, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(
+                formValues
+            )
+        });
+        let r = await res.json();
+        console.log("check email is there or not", r);
+    };
+
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -81,7 +88,6 @@ export const Nav1 = ({ handleSignin }) => {
     };
 
     return <>
-        <div className="w-2/12 m-auto"><button onClick={handleSubmit}>sumbit</button></div>
         <div className="w-full h-10 border border-blue-50 flex">
             <div className="w-2/6 border border-white text-xs font-bold flex mt-3">
                 <span className="text-pink-600 ml-6">EOSS | UPTO 70% Off.</span>

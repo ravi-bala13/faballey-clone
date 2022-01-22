@@ -7,13 +7,13 @@ const router = express.Router();
 router.post("", async (req, res) => {
     try {
         // console.log("from signup:", req.body);
-        // // const productByMobile = await User.findOne({ email: req.body.email })
-        // //     .lean()
-        // //     .exec();
-        // // if (productByMobile) {
-        // //     throw new Error("Please try with a different email address");
-        // // }
-        // // return true;
+        // const productByMobile = await User.findOne({ email: req.body.email })
+        //     .lean()
+        //     .exec();
+        // if (productByMobile) {
+        //     throw new Error("Please try with a different email address");
+        // }
+        // return true;
 
         const user = await User.create(req.body);
         console.log("user:", user);
@@ -23,9 +23,20 @@ router.post("", async (req, res) => {
         return res.status(500).send({ message: e.message, status: "failed" });
     }
 });
-router.get("/", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email }).lean().exec();
+        // console.log("user:", user);
+        return res.status(201).send(user);
+    } catch (e) {
+        // console.log(e);
+        return res.status(500).send({ message: e.message, status: "failed" });
+    }
+});
+
+router.get("/data", async (req, res) => {
+    try {
+        const user = await User.find().lean().exec();
         // console.log("user:", user);
         return res.status(201).send(user);
     } catch (e) {
