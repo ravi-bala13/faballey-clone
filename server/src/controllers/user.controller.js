@@ -26,7 +26,7 @@ router.post("", async (req, res) => {
 router.get("/", async (req, res) => {
     try {
         const user = await User.find().lean().exec();
-        console.log("user:", user);
+        // console.log("user:", user);
         return res.status(201).send(user);
     } catch (e) {
         // console.log(e);
@@ -40,6 +40,25 @@ router.delete("/:id", async (req, res) => {
         return res.status(201).send(user);
     } catch (e) {
         return res.status(500).json({ status: "failed", message: e.message });
+    }
+});
+
+// &&&&&&&&&&&&&&&&&&& bals code
+router.patch("/updateCart/:userId", async (req, res) => {
+    console.log("hai");
+    try {
+        let product = req.body;
+        console.log("from update", product);
+
+        let result = await User.findByIdAndUpdate(req.params.userId, {
+            $push: { cartItems: product },
+        })
+            .lean()
+            .exec();
+
+        res.status(200).send(result);
+    } catch (e) {
+        return res.status(500).json({ message: e.message, status: "Failed" });
     }
 });
 

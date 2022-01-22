@@ -1,8 +1,8 @@
 # faballey-clone
 
-faballey.com
-## About Faballry:
-<!-- Udemy is an E-learning web application for online learning and teaching. -->
+[faballey.com](https://www.faballey.com/)
+## About FabAlley:
+FabAlley is an online fashion store. Launched in 2012, FabAlley covers everything from the glitziest party dresses, relaxed vacation wear, trendy casual wear to statement accessories. The brand’s products are inspired from trends around the world - global runway and fast fashion trends that have found favor in India and Internationally. FabAlley understands the evolving western-wear needs unique to Indian women and focuses on providing 360 degree wardrobe solutions covering all facets and occasions.
 
 
 ## Demo
@@ -11,7 +11,12 @@ faballey.com
 
 ## Installation and Run Locally
 
-Install-project with git
+Prerequisites
+
+- VS Code
+  Installation
+- Clone the repository
+  Git Clone - https://github.com/Sachi4496/faballey-clone 
 
 ```bash
  git clone https://github.com/Sachi4496/faballey-clone.git
@@ -19,22 +24,28 @@ Install-project with git
 #### `npm i`
 #### `npm run server`
 
+
+## Screenshots
+
+<!-- ![App Screenshot](https://github.com/alhassan069/AJIO/blob/7c7fb9d7278c56694344f8f7fc19ef345476515a/images/img22.gif)
+
+![App Screenshot](images/img33.png)
+
+![App Screenshot](images/img45.png) -->
+
+
+
 ## Features
 
-- Login and Sign up
+- Login and Sign up using Mobile OTP
 - Carousel & Search Results
 - Sorting on product Page
 - Add to cart
 - Apply the coupon on your cart 
-- Purchase the Product
+- Purchase the Product- 
 - Fullscreen mode
 
 
-## Acknowledgements
-
- - [faballey.com](https://www.faballey.com/)
- - [Masai School](https://masaischool.com/)
- 
  
 <!-- ## Presentation Video :-
 [Demo of project]() -->
@@ -42,27 +53,40 @@ Install-project with git
 ## Deployed link
 <!-- 🔹 Live Demo [click here](https://aqueous-fortress-78543.herokuapp.com) -->
 
-## Authors
-<!-- -  [Sachidanand Pradhan](https://github.com/Sachi4496)
 
-- [Gangavaram Thousif](https://github.com/Thousifg)
 
-- [Renuka Prasad](https://github.com/Renukote)
+## 🛠 Tech Stacks We Use
 
-- [Suraj Karosia](https://github.com/1998Suraj)
-
-- [Avdhesh Pal](https://github.com/AvdheshPal)
-
-- [Akash Kumar](https://github.com/KumarAkash22) -->
-
-## 🛠 Tech Stacks
-- #### React JS
-- #### Tailwind Css
-- #### JavaScript
+### Backend
 - #### Node
 - #### Express
 - #### Mongodb
-- #### GIT
+- #### Nodemailer
+
+### Frontend
+- #### React JS
+- #### Tailwind Css
+- #### JavaScript
+
+
+## Acknowledgements
+
+ - [faballey.com](https://www.faballey.com/)
+ - [Masai School](https://masaischool.com/)
+ 
+
+
+## Authors
+-  [Sachidanand Pradhan](https://github.com/Sachi4496)
+
+- [Bala Murugan](https://github.com/ravi-bala13)
+
+- [Mohit Solanki](https://github.com/mohitsolanki71)
+
+- [Prajwal Namdeo Rathod](https://github.com/prarathod)
+
+- [Shivam Singh](https://github.com/ShivamSinghhh)
+
 
 
 <!-- ## Screenshots :-
