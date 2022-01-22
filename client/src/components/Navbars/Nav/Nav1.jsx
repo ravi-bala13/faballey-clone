@@ -3,15 +3,19 @@ import { MdCardTravel } from "react-icons/md";
 import Faballeynav from "../images/logo.png";
 import Indya from "../images/indya.png";
 import 'antd/dist/antd.min.css';
-import { Input } from "antd";
+// import { Input } from "antd";
 import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
 
 export const Nav1 = ({ handleSignin }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const [email, setEmail] = useState("")
-    const [pwd1, setPwd1] = useState("")
+    const initialValue = {
+        email: "",
+        password: "",
+    }
+    const [form, setForm] = useState(initialValue);
+    const [email, setEmail] = useState("");
+    const [pwd1, setPwd1] = useState("");
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -24,12 +28,17 @@ export const Nav1 = ({ handleSignin }) => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-
-    const handleSubmit = (e) => {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({ ...form, name: value });
+        console.log(form);
+    }
+    const handleSubmit = () => {
         const data = {
-            email: "saas@gnmail.com",
-            pass: "hfkjhsbf",
+            email: email,
+            password: pwd1,
         }
+        console.log("data", data);
         fetch("http://localhost:2345/signUp")
             .then((res) => res.json())
             .then((data) => {
@@ -39,14 +48,6 @@ export const Nav1 = ({ handleSignin }) => {
         let datas = JSON.parse(localStorage.getItem("user"));
         console.log(datas);
     };
-    const face_auth = () => {
-        window.location.href = ""
-
-    }
-
-    const google_auth = () => {
-        window.location.href = ""
-    }
     return <>
         <div className="w-2/12 m-auto"><button onClick={handleSubmit}>sumbit</button></div>
         <div className="w-full h-10 border border-blue-50 flex">
@@ -69,8 +70,9 @@ export const Nav1 = ({ handleSignin }) => {
             <div className="w-full py-8">
                 <div className="w-11/12 ml-2">
                     <label><h4 className="font-bold">for a quicker checkout</h4></label>
-                    <input className="w-full py-4 border border-slate-400 mt-4 placeholder:align-baseline" placeholder="Enter Mobile/Email"></input>
-                    <div className="w-full justify-center align-middle mt-4 bg-pink-600 cursor-pointer"><div className="w-24 m-auto py-3 bg-pink-600"><h4 className="text-white font-bold">CONTINUE</h4></div></div>
+                    <input className="w-full py-4 border border-slate-400 mt-4 placeholder:align-baseline" type="email" value={setForm.email} placeholder="Enter Mobile" onChange={handleChange}></input>
+                    <input className="w-full py-4 border border-slate-400 mt-4 placeholder:align-baseline" type="password" value={setForm.password} placeholder="Enter password" onChange={handleChange}></input>
+                    <div className="w-full justify-center align-middle mt-4 bg-pink-600 cursor-pointer" onClick={handleSubmit}><div className="w-24 m-auto py-3 bg-pink-600"><h4 className="text-white font-bold">CONTINUE</h4></div></div>
                     <div className="w-full justify-center ml-16 mt-4">
                         <h5 className="inline-block ml-28">Or continue with</h5>
                     </div>
@@ -79,7 +81,7 @@ export const Nav1 = ({ handleSignin }) => {
                             <img className="cursor-pointer" src="https://www.faballey.com/images/loginfb.png" alt="" />
                         </div>
                         <div className="w-5/12">
-                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" onClick={google_auth} />
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
                         </div>
                     </div>
                     <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setIsModalVisible(false)}>skip</h5>
