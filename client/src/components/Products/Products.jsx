@@ -6,6 +6,7 @@ import { Navbar } from "../Navbars/Nav/Navbar";
 export const Products = () => {
   const [prodList, setProdList] = useState([]);
   console.log("prodList:", prodList);
+  const [forSortList, setForSortList] = useState([]);
 
   const left_opitons = [
     "PARTY WEAR",
@@ -32,7 +33,9 @@ export const Products = () => {
     const option = e.target.value;
 
     if (option === "blue") {
-      const updatelist = prodList.filter((ev) => ev.color === option);
+      const updatelist = prodList.filter((ev) =>
+        ev.color.filter((each_clr) => each_clr === option)
+      );
       setProdList(updatelist);
     }
 
@@ -63,8 +66,14 @@ export const Products = () => {
 
   const handleDiscount = (e) => {
     const option = e.target.value;
+    console.log("option:", option);
+
+    if (option === "discount") {
+      setProdList(forSortList);
+    }
+
     if (option === "ten") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) =>
           (ev.discount / ev.price) * 100 <= 20 &&
           (ev.discount / ev.price) * 100 > 10
@@ -73,7 +82,7 @@ export const Products = () => {
     }
 
     if (option === "twenty") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) =>
           (ev.discount / ev.price) * 100 <= 30 &&
           (ev.discount / ev.price) * 100 > 21
@@ -82,7 +91,7 @@ export const Products = () => {
     }
 
     if (option === "thirty") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) =>
           (ev.discount / ev.price) * 100 <= 40 &&
           (ev.discount / ev.price) * 100 > 31
@@ -91,7 +100,7 @@ export const Products = () => {
     }
 
     if (option === "forty") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) =>
           (ev.discount / ev.price) * 100 <= 50 &&
           (ev.discount / ev.price) * 100 > 41
@@ -104,33 +113,47 @@ export const Products = () => {
     const option = e.target.value;
     console.log("option:", option);
 
+    if (option === "price") {
+      setProdList(forSortList);
+    }
+
     if (option === "fivehundred") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) => ev.price - ev.discount > 500 && ev.price - ev.discount <= 1000
       );
       setProdList(updatelist);
     }
 
     if (option === "onethousand") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) => ev.price - ev.discount > 1001 && ev.price - ev.discount <= 1500
       );
       setProdList(updatelist);
     }
 
     if (option === "fifteenhundred") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) => ev.price - ev.discount > 1501 && ev.price - ev.discount <= 2000
       );
       setProdList(updatelist);
     }
 
     if (option === "twothousand") {
-      const updatelist = prodList.filter(
+      const updatelist = forSortList.filter(
         (ev) => ev.price - ev.discount > 2001 && ev.price - ev.discount <= 3000
       );
       setProdList(updatelist);
     }
+  };
+
+  const handleImages = (id) => {
+    const updatelist = forSortList.map((e) => {
+      if (e._id === id) {
+        e.status = !e.status;
+      }
+      return e;
+    });
+    setProdList(updatelist);
   };
 
   const getProducts = () => {
@@ -140,6 +163,7 @@ export const Products = () => {
         .then((data) => {
           // console.log("data:", data);
           setProdList(data);
+          setForSortList(data);
         });
     } catch (error) {
       console.log("error:", error);
@@ -259,10 +283,17 @@ export const Products = () => {
             <div className="bottom-products">
               {prodList.map((item) => (
                 <Link to={`/products/details/${item._id}`}>
-                  <div className="each-item" key={item.id}>
+                  <div className="each-item" key={item._id}>
                     <div className="for-img">
-                      <img src={item.img[0]} alt="No load" />
-                      {item.price >= 1200 ? (
+                      <img
+                        onMouseEnter={() => handleImages(item._id)}
+                        onMouseLeave={() => {
+                          handleImages(item._id);
+                        }}
+                        src={item.status ? item.image[0] : item.image[1]}
+                        alt="no load"
+                      />
+                      {item.price - item.discount >= 2000 ? (
                         <span className="offer-circle">
                           50% <br />
                           OFF
@@ -270,15 +301,22 @@ export const Products = () => {
                       ) : null}
                     </div>
                     <div className="for-details">
-                      <p style={{ margin: "0px", color: "black" }}>{item.name}</p>
+                      <p style={{ margin: "0px", color: "black" }}>
+                        {item.productName}
+                      </p>
                       <p
                         style={{
                           margin: "0px",
-                          color: "black",
+
                           fontWeight: "bolder",
+                          color: "rgb(252, 100, 134)",
                         }}
                       >
-                        ₹{item.price}
+                        ₹{item.price - item.discount}
+                        {"  "}
+                        <strike style={{ color: "black" }}>
+                          ₹{item.price}
+                        </strike>
                       </p>
                     </div>
                   </div>
