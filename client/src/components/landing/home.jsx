@@ -323,7 +323,7 @@ export const Home = () => {
           </div>
         </div>
 
-        {/* deals you dont want to miss */}
+        {/* deals you dont want to miss section*/}
 
         <div className="text-center text-2xl font-semibold ">
           <p className="m-4">DEALS YOU DON'T WANT TO MISS</p>
@@ -376,7 +376,7 @@ export const Home = () => {
           </div>
         </div>
 
-        {/* party wear 50% off */}
+        {/* party wear 50% off section*/}
 
         <div className="mt-8">
           <img

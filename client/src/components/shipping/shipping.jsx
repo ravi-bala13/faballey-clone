@@ -1,7 +1,23 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 export const Shipping = () => {
   const [form, setForm] = useState([]);
+  const [product, setProduct] = useState([]);
+  let id = "61eba90dc18ea824e1c5fb14";
+
+  useEffect(() => {
+    getProductDetails();
+  }, []);
+
+  const getProductDetails = async () => {
+    const response = await fetch(`http://localhost:2345/users/${id}`);
+    let data = await response.json();
+    // console.log("data:", data);
+    setProduct("get data", data);
+  };
+
+  console.log(product);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
