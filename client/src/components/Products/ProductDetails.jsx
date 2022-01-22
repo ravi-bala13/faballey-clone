@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import { Navbar } from "../Navbars/Nav/Navbar";
 import "./ProductDetails.css";
+// import { axios } from "axios";
 
 export const ProductDetails = () => {
   const [product, setProduct] = useState({
@@ -26,6 +27,7 @@ export const ProductDetails = () => {
   const addToBag = (product) => {
     let id = "61eba3b515af8cdf6e65a3d7";
     console.log("id:", id);
+
     try {
       fetch(`http://localhost:2345/users/updateCart/${id}`, {
         method: "PATCH",
