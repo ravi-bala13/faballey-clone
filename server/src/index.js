@@ -11,6 +11,7 @@ const productController = require("./controllers/product.controller");
 const productDetailsController = require("./controllers/productDetails.controller");
 const cartController = require("./controllers/cart.controller");
 const signUp = require("./controllers/user.controller");
+const login = require("./controllers/login.controller")
 
 app.use("/products", productController);
 
@@ -19,5 +20,7 @@ app.use("/cart", cartController);
 app.use("/productDetail", productDetailsController);
 
 app.use("/users", signUp);
+
+app.use("/login", login);
 
 module.exports = app;
