@@ -10,8 +10,8 @@ import { Modal, Button } from 'antd';
 export const Nav1 = ({ handleSignin }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const [email, setEmail] = useState("")
-    const [pwd1, setPwd1] = useState("")
+    const [email, setEmail] = useState("");
+    const [pwd1, setPwd1] = useState("");
 
     const showModal = () => {
         setIsModalVisible(true);
