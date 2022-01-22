@@ -1,6 +1,6 @@
 import { ADD_TODO } from "./actionTypes";
 
-const init = { token: "" };
+const init = { userid: "" };
 
 export const reducer = (state = init, { type, payload }) => {
   console.log("state from redu:", state);
