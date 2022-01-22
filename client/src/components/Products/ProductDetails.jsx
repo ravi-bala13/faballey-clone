@@ -23,13 +23,30 @@ export const ProductDetails = () => {
     getProductDetails();
   }, []);
 
-  // const addToBag = (product) => {
-  //   if (isAuth) {
-  //     dispatch(addBAG(product));
-  //   } else {
-  //     alert("Login First");
-  //   }
-  // };
+  const addToBag = (product) => {
+    let id = "61eba3b515af8cdf6e65a3d7";
+    console.log("id:", id);
+    try {
+      fetch(`http://localhost:2345/users/updateCart/${id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("data:", data);
+        });
+    } catch (err) {
+      console.log("err:", err);
+    }
+    // if (isAuth) {
+    //   dispatch(addBAG(product));
+    // } else {
+    //   alert("Login First");
+    // }
+  };
 
   return (
     <>
@@ -64,7 +81,10 @@ export const ProductDetails = () => {
             alt="size and clr img"
           />
           <div>
-            <button className="my-button border-2 w-44 h-12 mr-5">
+            <button
+              onClick={() => addToBag(product)}
+              className="my-button border-2 w-44 h-12 mr-5"
+            >
               ADD TO BAG
             </button>
             <button className="my-button no-color border-2 w-40 h-12">
