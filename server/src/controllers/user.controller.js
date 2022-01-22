@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("", async (req, res) => {
     try {
         console.log("from signup:", req.body);
-        const productByMobile = await User.findOne({ mobile: req.body.mobile })
+        const productByMobile = await User.findOne({ email: req.body.email })
             .lean()
             .exec();
         if (productByMobile) {

@@ -47,9 +47,9 @@ export const Nav1 = ({ handleSignin }) => {
             fetch(`http://localhost:2345/users`, {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
-                body: JSON.stringify({
-                    users: formValues
-                })
+                body: JSON.stringify(
+                    formValues
+                )
             });
             setIsModalVisible(false);
         }
