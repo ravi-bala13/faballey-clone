@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useEffect } from "react";
 import CartNavbar from "./CartNavbar";
+=======
+import React from "react";
+import { CartNavbar } from "./CartNavbar";
+>>>>>>> 5aa5ba4314049f4dfb6e4be734ad4c1850888fca
 import { MdDelete } from "react-icons/md";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useState } from "react";
@@ -144,7 +149,7 @@ export const Cart = () => {
               </table>
             </div>
 
-            <button className="place-order">Place Order</button>
+            <button className="place-order"><a href="/shipping" className="text-white">Place Order</a> </button>
           </div>
           <br />
           <p>Estimated Delivery Time</p>

@@ -9,7 +9,7 @@ import { MdPayment } from "react-icons/md";
 import Faballeynav2 from "../Navbars/images/faballey2ndnavbar.png";
 import { useSelector } from "react-redux";
 
-function CartNavbar() {
+export const CartNavbar = () => {
   const token = useSelector((state) => state.token);
 
   return (
@@ -29,6 +29,4 @@ function CartNavbar() {
       </div>
     </div>
   );
-}
-
-export default CartNavbar;
+};
