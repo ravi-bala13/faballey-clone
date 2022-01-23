@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Navbar } from "../Navbars/Nav/Navbar";
 import "./ProductDetails.css";
 // import { axios } from "axios";
 
 export const ProductDetails = () => {
+  const { userId } = useSelector((state) => state.userId);
+
   const [product, setProduct] = useState({
     image: [],
   });
@@ -25,11 +28,10 @@ export const ProductDetails = () => {
   }, []);
 
   const addToBag = (product) => {
-    let id = "61eba3b515af8cdf6e65a3d7";
-    console.log("id:", id);
+    console.log("id:", userId);
 
     try {
-      fetch(`http://localhost:2345/users/updateCart/${id}`, {
+      fetch(`http://localhost:2345/users/updateCart/${userId}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

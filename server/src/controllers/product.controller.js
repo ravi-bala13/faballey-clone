@@ -14,6 +14,13 @@ router.get("/", async (req, res) => {
   res.send(products);
 });
 
+router.get("/:id", async (req, res) => {
+  console.log("req:", req.params.id);
+  const product = await Product.findById(req.params.id).lean().exec();
+  console.log("product:", product);
+  res.send(product);
+});
+
 router.get("/type/:id", async (req, res) => {
   const products = await Product.find({ category: { $eq: `${req.params.id}` } })
     .lean()
