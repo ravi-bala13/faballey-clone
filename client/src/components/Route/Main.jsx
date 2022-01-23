@@ -19,6 +19,7 @@ export const Main = () => {
           element={<ProductDetails />}
         ></Route>
         <Route path="/checkout/cart" element={<Cart />}></Route>
+        <Route path="/shipping" element={<Shipping />}></Route>
         <Route path="*" element={<Home />}></Route>
       </Routes>
       <Footer />

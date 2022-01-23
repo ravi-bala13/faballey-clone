@@ -14,7 +14,25 @@ router.get("/", async (req, res) => {
   res.send(products);
 });
 
-router.get("/:id", async (req, res) => {
+router.get("details/:id", async (req, res) => {
+  try {
+    const el = await Product.findById(req.params.id).lean().exec();
+    console.log(el);
+    return res.send(el);
+  } catch (error) {
+    res.send(error.message);
+  }
+});
+
+router.get("/type/:id", async (req, res) => {
+  const products = await Product.find({ category: { $eq: `${req.params.id}` } })
+    .lean()
+    .exec();
+
+  res.send(products);
+});
+
+router.get("/brand/:id", async (req, res) => {
   console.log("req:", req.params.id);
   const product = await Product.findById(req.params.id).lean().exec();
   console.log("product:", product);
