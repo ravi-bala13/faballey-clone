@@ -136,7 +136,8 @@ export const Nav1 = () => {
               </span>{" "}
               | <span onClick={showModal}>Sign up</span>
             </p>
-            <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
+            <a href="/checkout/cart" className="text-black"><MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" /></a>
+
           </div>
         </div>
       </div>
