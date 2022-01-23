@@ -32,7 +32,7 @@ export const Shipping = () => {
   };
 
   const handleSubmit = () => {
-    const final_data = { form, sum };
+    const final_data = { form, sum, cart_length: cart.length };
     console.log("final_data", final_data);
 
     localStorage.setItem("shipping", JSON.stringify(final_data));

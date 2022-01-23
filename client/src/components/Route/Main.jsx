@@ -6,6 +6,8 @@ import { Home } from "../landing/home";
 import { Footer } from "../Footer/Footer";
 import { Cart } from "../checkout/Cart";
 import { Shipping } from "../shipping/shipping";
+import { Payment } from "../payment/payment";
+
 export const Main = () => {
   return (
     <>
@@ -22,6 +24,8 @@ export const Main = () => {
       <Footer />
 
       {/* <Shipping></Shipping> */}
+
+      {/* <Payment></Payment> */}
     </>
   );
 };
