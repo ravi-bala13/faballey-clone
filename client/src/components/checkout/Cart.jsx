@@ -1,5 +1,5 @@
 import React from "react";
-import CartNavbar from "./CartNavbar";
+import { CartNavbar } from "./CartNavbar";
 import { MdDelete } from "react-icons/md";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
