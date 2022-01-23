@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { loadData } from "../../utils/localStorage";
 import { Navbar } from "../Navbars/Nav/Navbar";
 import "./ProductDetails.css";
 // import { axios } from "axios";
 
 export const ProductDetails = () => {
-  const { userId } = useSelector((state) => state.userId);
+  const userId = useSelector((state) => state.userId);
+  console.log("userId:", userId);
 
   const [product, setProduct] = useState({
     image: [],
@@ -28,7 +30,8 @@ export const ProductDetails = () => {
   }, []);
 
   const addToBag = (product) => {
-    console.log("id:", userId);
+    let userId = loadData("userId");
+    console.log("userId:", userId);
 
     try {
       fetch(`http://localhost:2345/users/updateCart/${userId}`, {

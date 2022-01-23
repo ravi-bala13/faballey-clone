@@ -6,9 +6,11 @@ import { Home } from "../landing/home";
 import { Footer } from "../Footer/Footer";
 import { Cart } from "../checkout/Cart";
 import { Shipping } from "../shipping/shipping";
+import { Navbar } from "../Navbars/Nav/Navbar";
 export const Main = () => {
   return (
     <>
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/products" element={<Products />}></Route>

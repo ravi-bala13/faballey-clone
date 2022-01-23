@@ -8,6 +8,8 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getID } from "../../../Redux/action";
+import { saveData } from "../../../utils/localStorage";
+import { Link } from "react-router-dom";
 
 export const Nav1 = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -70,6 +72,8 @@ export const Nav1 = () => {
 
   // const [ChangeNavbar, setNavbar] = useState(false);
   //   ******************* Bals code ********
+  const userId = useSelector((state) => state.userId);
+
   const dispatch = useDispatch();
   // **************************************
 
@@ -84,8 +88,10 @@ export const Nav1 = () => {
     console.log("check email is there or not", r);
     //   ******************* Bals code ********
     console.log("user", r._id);
+    saveData("userId", r._id);
 
     dispatch(getID(r._id));
+    console.log("userId:", userId);
     // **************************************
 
     setloginSucess(loginSucess + 1);
@@ -136,7 +142,10 @@ export const Nav1 = () => {
               </span>{" "}
               | <span onClick={showModal}>Sign up</span>
             </p>
-            <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
+            <Link to={"/checkout/cart"}>
+              {" "}
+              <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
+            </Link>
           </div>
         </div>
       </div>
