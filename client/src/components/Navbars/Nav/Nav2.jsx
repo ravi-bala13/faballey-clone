@@ -6,6 +6,7 @@ export const Nav2 = () => {
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
     const [show4, setShow4] = useState(false);
+    const [show5, setShow5] = useState(false);
     const mouseEnter = () => {
         setShow(true);
     }
@@ -23,7 +24,7 @@ export const Nav2 = () => {
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={() => setShow2(true)} onMouseLeave={() => setShow2(false)}>THE EDIT</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={() => setShow3(true)} onMouseLeave={() => setShow3(false)} > PARTY'21</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-pink-600 border-b-pink-600 text-pink-600" onMouseEnter={() => setShow4(true)} onMouseLeave={() => setShow4(false)}>CLOTHING</a>
-                    <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black">TOPS</a>
+                    <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black" onMouseEnter={() => setShow5(true)} onMouseLeave={() => setShow5(false)}>TOPS</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black">DRESSES</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-pink-600 border-b-pink-600 text-pink-600">WINTER'21</a>
                     <a className="text-xs px-2 cursor-pointer py-3 hover:border-b-4 hover:text-black border-b-pink-600 text-black">LOUNGEWAR</a>
@@ -129,6 +130,50 @@ export const Nav2 = () => {
                 </div>
                 <div className="w-1/3 h-64 ml-28 mt-4 text-black">
                     <img className="w-48 h-72" src="https://img.faballey.com/images/clothingdrpdnnv1.jpg" alt="New In" />
+                </div>
+            </div> : null
+        }
+        {
+            show5 ? <div className="w-full flex absolute bg-white text-black z-50 pb-6" onMouseEnter={() => setShow5(true)} onMouseLeave={() => setShow5(false)}>
+                <div className="w-34 flex flex-col ml-48 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
+                    <h2 className="font-bold text-base text-black">SHOP BY STYLE</h2>
+                    <a className="mt-2 text-black" href=""> Crop Tops</a>
+                    <a className="mt-2 text-black" href=""> Tank Tops</a>
+                    <a className="mt-2 text-black" href=""> T-Shirt</a>
+                    <a className="mt-2 text-black" href=""> Shirt</a>
+                    <a className="mt-2 text-black" href=""> Blouses</a>
+                    <a className="mt-2 text-black" href=""> Maxi Tops</a>
+                    <a className="mt-2 text-black" href=""> Wrap Tops</a>
+                </div>
+                <div className="w-34 flex flex-col ml-40 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
+                    <h2 className="text-white">.</h2>
+                    <a className="mt-2 text-black" href=""> Florals</a>
+                    <a className="mt-2 text-black" href=""> Checks</a>
+                    <a className="mt-2 text-black" href=""> Pinks</a>
+                    <a className="mt-2 text-black" href=""> Smoked Styles</a>
+                </div>
+                <div className="w-34 flex flex-col ml-40 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
+                    <h2 className="font-bold text-base text-black">TRENDS</h2>
+                    <a className="mt-2 text-black" href=""> Florals</a>
+                    <a className="mt-2 text-black" href=""> Checks</a>
+                    <a className="mt-2 text-black" href=""> Pinks</a>
+                    <a className="mt-2 text-black" href=""> Smoked Styles</a>
+                    <a className="mt-2 text-black" href=""> Puff Sleeves</a>
+                    <a className="mt-2 text-black" href=""> Pinks</a>
+                    <a className="mt-2 text-black" href=""> Waist Cinchers</a>
+                </div>
+                <div className="w-34 flex flex-col ml-40 text-left mt-4 Lato',sans-serif font-light text-sm align-text-bottom">
+                    <h2 className="font-bold text-base text-black">TRENDS</h2>
+                    <a className="mt-2 text-black" href=""> Florals</a>
+                    <a className="mt-2 text-black" href=""> Checks</a>
+                    <a className="mt-2 text-black" href=""> Pinks</a>
+                    <a className="mt-2 text-black" href=""> Smoked Styles</a>
+                    <a className="mt-2 text-black" href=""> Puff Sleeves</a>
+                    <a className="mt-2 text-black" href=""> Pinks</a>
+                    <a className="mt-2 text-black" href=""> Waist Cinchers</a>
+                </div>
+                <div className="w-1/3 h-64 ml-40 mt-4">
+                    <img className="w-48 h-72 pb-2" src="https://img.faballey.com/images/topsdrpdnnv1.jpg" alt="New In" />
                 </div>
             </div> : null
         }
