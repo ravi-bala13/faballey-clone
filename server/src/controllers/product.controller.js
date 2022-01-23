@@ -14,23 +14,30 @@ router.get("/", async (req, res) => {
   res.send(products);
 });
 
-router.get("/type/:id", async (req, res) => {
-  const products = await Product.find({ category: { $eq: `${req.params.id}` } })
-    .lean()
-    .exec();
-
-  res.send(products);
-});
-
-router.get("/brand/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   console.log("req:", req.params.id);
-  const products = await Product.find({
-    brandName: { $eq: `${req.params.id}` },
-  })
-    .lean()
-    .exec();
-  res.send(products);
+  const product = await Product.findById(req.params.id).lean().exec();
+  console.log("product:", product);
+  res.send(product);
 });
+
+// router.get("/type/:id", async (req, res) => {
+//   const products = await Product.find({ category: { $eq: `${req.params.id}` } })
+//     .lean()
+//     .exec();
+
+//   res.send(products);
+// });
+
+// router.get("/brand/:id", async (req, res) => {
+//   console.log("req:", req.params.id);
+//   const products = await Product.find({
+//     brandName: { $eq: `${req.params.id}` },
+//   })
+//     .lean()
+//     .exec();
+//   res.send(products);
+// });
 
 // router.get("/sort/:category/", async (req, res) => {
 //   const products = await Product.find().lean().exec();
@@ -66,20 +73,20 @@ router.get("/brand/:id", async (req, res) => {
 //   res.send(products);
 // });
 
-router.get("/price/:x/:y/:category/", async (req, res) => {
-  const products = await Product.find({
-    category: req.params.category,
-    gender: "men",
-  }).lean();
-  let newproducts = products.filter(function (el) {
-    return (
-      el.price * ((100 - el.discount) / 100) < req.params.x &&
-      (el.price * (100 - el.discount)) / 100 > req.params.y
-    );
-  });
-  return res.send({
-    products: newproducts,
-  });
-});
+// router.get("/price/:x/:y/:category/", async (req, res) => {
+//   const products = await Product.find({
+//     category: req.params.category,
+//     gender: "men",
+//   }).lean();
+//   let newproducts = products.filter(function (el) {
+//     return (
+//       el.price * ((100 - el.discount) / 100) < req.params.x &&
+//       (el.price * (100 - el.discount)) / 100 > req.params.y
+//     );
+//   });
+//   return res.send({
+//     products: newproducts,
+//   });
+// });
 
 module.exports = router;

@@ -1,6 +1,6 @@
-import { ADD_TODO } from "./actionTypes";
+import { GET_ID } from "./actionTypes";
 
-export const addTodo = (data) => ({
-  type: ADD_TODO,
+export const getID = (data) => ({
+  type: GET_ID,
   payload: data,
 });
