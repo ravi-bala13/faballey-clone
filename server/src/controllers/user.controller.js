@@ -45,6 +45,17 @@ router.get("/data", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).lean().exec();
+    // console.log("user:", user);
+    return res.status(201).send(user);
+  } catch (e) {
+    // console.log(e);
+    return res.status(500).send({ message: e.message, status: "failed" });
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id).lean().exec();
