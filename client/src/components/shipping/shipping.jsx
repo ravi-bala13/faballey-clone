@@ -36,6 +36,12 @@ export const Shipping = () => {
     console.log("final_data", final_data);
 
     localStorage.setItem("shipping", JSON.stringify(final_data));
+
+    setTimeout(function () {
+
+      alert("Congratulations! your payment is successfully paid");
+      window.location.href = "/";
+    }, 1000);
   };
 
   return (

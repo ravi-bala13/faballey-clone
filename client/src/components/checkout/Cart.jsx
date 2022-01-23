@@ -90,7 +90,7 @@ export const Cart = () => {
               </table>
             </div>
 
-            <button className="place-order">Place Order</button>
+            <button className="place-order"><a href="/shipping" className="text-white">Place Order</a> </button>
           </div>
           <br />
           <p>Estimated Delivery Time</p>
