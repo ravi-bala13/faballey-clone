@@ -8,12 +8,13 @@ router.post("", async (req, res) => {
   try {
     // console.log("from signup:", req.body);
     // const productByMobile = await User.findOne({ email: req.body.email })
-    //     .lean()
-    //     .exec();
+
+    //   .lean()
+    //   .exec();
+    // console.log("productByMobile:", productByMobile);
     // if (productByMobile) {
-    //     throw new Error("Please try with a different email address");
+    //   throw new Error("Please try with a different email address");
     // }
-    // return true;
 
     const user = await User.create(req.body);
     console.log("user:", user);
@@ -46,9 +47,10 @@ router.get("/data", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  console.log("req:", req.params.id);
   try {
     const user = await User.findById(req.params.id).lean().exec();
-    // console.log("user:", user);
+    console.log("user:", user);
     return res.status(201).send(user);
   } catch (e) {
     // console.log(e);
