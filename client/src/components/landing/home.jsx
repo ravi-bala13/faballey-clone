@@ -145,7 +145,7 @@ export const Home = () => {
       7000
     );
 
-    return () => {};
+    return () => { };
   }, [index]);
 
   const nextSlide = () => {
@@ -369,7 +369,7 @@ export const Home = () => {
           <p className="m-4">IN THE SPOTLIGHT SECTION</p>
           <div className="flex">
             {spotlight_img.map((e, id, i) => (
-              <div className="flex-1 m-2" key={i}>
+              <div className="flex-1 m-2" key={id}>
                 <img src={e} className="w-full" alt="img" />
               </div>
             ))}

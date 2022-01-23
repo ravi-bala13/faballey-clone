@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema(
     image: [{ type: String, required: true }],
     discount: { type: Number, required: true },
     sizes: [{ type: String, required: false }],
-    color: { type: String, required: false },
+    color: [{ type: String, required: false }],
     gender: { type: String, required: true },
     status: { type: Boolean, required: false }
 

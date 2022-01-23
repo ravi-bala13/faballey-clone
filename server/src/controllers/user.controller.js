@@ -6,13 +6,13 @@ const router = express.Router();
 
 router.post("", async (req, res) => {
   try {
-    console.log("from signup:", req.body);
-    const productByMobile = await User.findOne({ mobile: req.body.mobile })
-      .lean()
-      .exec();
-    if (productByMobile) {
-      throw new Error("Please try with a different email address");
-    }
+    // console.log("from signup:", req.body);
+    // const productByMobile = await User.findOne({ email: req.body.email })
+    //     .lean()
+    //     .exec();
+    // if (productByMobile) {
+    //     throw new Error("Please try with a different email address");
+    // }
     // return true;
 
     const user = await User.create(req.body);
@@ -23,10 +23,10 @@ router.post("", async (req, res) => {
     return res.status(500).send({ message: e.message, status: "failed" });
   }
 });
-router.get("/", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const user = await User.find().lean().exec();
-    console.log("user:", user);
+    const user = await User.findOne({ email: req.body.email }).lean().exec();
+    // console.log("user:", user);
     return res.status(201).send(user);
   } catch (e) {
     // console.log(e);
@@ -34,13 +34,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/data", async (req, res) => {
   try {
-    const el = await User.findById(req.params.id).lean().exec();
-    // console.log(el);
-    return res.send(el);
-  } catch (error) {
-    res.send(error.message);
+    const user = await User.find().lean().exec();
+    // console.log("user:", user);
+    return res.status(201).send(user);
+  } catch (e) {
+    // console.log(e);
+    return res.status(500).send({ message: e.message, status: "failed" });
   }
 });
 
@@ -50,6 +51,25 @@ router.delete("/:id", async (req, res) => {
     return res.status(201).send(user);
   } catch (e) {
     return res.status(500).json({ status: "failed", message: e.message });
+  }
+});
+
+// &&&&&&&&&&&&&&&&&&& bals code
+router.patch("/updateCart/:userId", async (req, res) => {
+  console.log("hai");
+  try {
+    let product = req.body;
+    console.log("from update", product);
+
+    let result = await User.findByIdAndUpdate(req.params.userId, {
+      $push: { cartItems: product },
+    })
+      .lean()
+      .exec();
+
+    res.status(200).send(result);
+  } catch (e) {
+    return res.status(500).json({ message: e.message, status: "Failed" });
   }
 });
 

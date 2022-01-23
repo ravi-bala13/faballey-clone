@@ -3,15 +3,12 @@ import { MdCardTravel } from "react-icons/md";
 import Faballeynav from "../images/logo.png";
 import Indya from "../images/indya.png";
 import 'antd/dist/antd.min.css';
-import { Input } from "antd";
-import React, { useState } from 'react';
-import { Modal, Button } from 'antd';
+// import { Input } from "antd";
+import React, { useState, useEffect } from 'react';
+import { Modal } from 'antd';
 
 export const Nav1 = ({ handleSignin }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const [email, setEmail] = useState("")
-    const [pwd1, setPwd1] = useState("")
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -25,30 +22,72 @@ export const Nav1 = ({ handleSignin }) => {
         setIsModalVisible(false);
     };
 
-    const handleSubmit = (e) => {
-        const data = {
-            email: "saas@gnmail.com",
-            pass: "hfkjhsbf",
-        }
-        fetch("http://localhost:2345/signUp")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("data:", data);
-            });
-        localStorage.setItem("user", JSON.stringify(data));
-        let datas = JSON.parse(localStorage.getItem("user"));
-        console.log(datas);
+    // signup form
+
+    const initialValues = { email: "", password: "" };
+    const [formValues, setFormValues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormValues({ ...formValues, [name]: value });
     };
-    const face_auth = () => {
-        window.location.href = ""
 
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validate(formValues));
+        setIsSubmit(true);
+    };
+    const [data, setData] = useState([]);
 
-    const google_auth = () => {
-        window.location.href = ""
-    }
+    useEffect(() => {
+        console.log(formErrors);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            console.log("here i am getting data", formValues);
+            fetch(`http://localhost:2345/users`, {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(
+                    formValues
+                )
+            });
+            setIsModalVisible(false);
+            getData();
+        }
+    }, [formErrors]);
+    // login
+    const getData = async () => {
+        let res = await fetch(`http://localhost:2345/users/login`, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(
+                formValues
+            )
+        });
+        let r = await res.json();
+        console.log("check email is there or not", r);
+    };
+
+    const validate = (values) => {
+        const errors = {};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!values.email) {
+            errors.email = "Email is required!";
+        } else if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!";
+        }
+        if (!values.password) {
+            errors.password = "Password is required";
+        } else if (values.password.length < 4) {
+            errors.password = "Password must be more than 4 characters";
+        } else if (values.password.length > 10) {
+            errors.password = "Password cannot exceed more than 10 characters";
+        }
+        return errors;
+    };
+
     return <>
-        <div className="w-2/12 m-auto"><button onClick={handleSubmit}>sumbit</button></div>
         <div className="w-full h-10 border border-blue-50 flex">
             <div className="w-2/6 border border-white text-xs font-bold flex mt-3">
                 <span className="text-pink-600 ml-6">EOSS | UPTO 70% Off.</span>
@@ -68,9 +107,33 @@ export const Nav1 = ({ handleSignin }) => {
         <Modal title="LOGIN OR SIGNUP" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
             <div className="w-full py-8">
                 <div className="w-11/12 ml-2">
-                    <label><h4 className="font-bold">for a quicker checkout</h4></label>
-                    <input className="w-full py-4 border border-slate-400 mt-4 placeholder:align-baseline" placeholder="Enter Mobile/Email"></input>
-                    <div className="w-full justify-center align-middle mt-4 bg-pink-600 cursor-pointer"><div className="w-24 m-auto py-3 bg-pink-600"><h4 className="text-white font-bold">CONTINUE</h4></div></div>
+                    {/* signUp form */}
+                    <form onSubmit={handleSubmit}>
+                        <label><h4 className="font-bold ml-12">for a quicker checkout</h4></label>
+                        <div className="w-full m-auto">
+                            <div className="w-11/12 m-auto">
+                                <input className="w-full h-10 border border-black"
+                                    type="text"
+                                    name="email"
+                                    placeholder="Enter Your Email"
+                                    value={formValues.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <p className="text-red-500">{formErrors.email}</p>
+                            <div className="w-11/12 m-auto">
+                                <input className="w-full h-10 border border-black"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Enter Your Password"
+                                    value={formValues.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <p className="text-red-500">{formErrors.password}</p>
+                            <button className="w-11/12 py-2 border border-pink-600 bg-pink-600 font-bold text-white" style={{ marginLeft: "18px" }}>CONTINUE</button>
+                        </div>
+                    </form>
                     <div className="w-full justify-center ml-16 mt-4">
                         <h5 className="inline-block ml-28">Or continue with</h5>
                     </div>
@@ -79,7 +142,7 @@ export const Nav1 = ({ handleSignin }) => {
                             <img className="cursor-pointer" src="https://www.faballey.com/images/loginfb.png" alt="" />
                         </div>
                         <div className="w-5/12">
-                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" onClick={google_auth} />
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
                         </div>
                     </div>
                     <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setIsModalVisible(false)}>skip</h5>

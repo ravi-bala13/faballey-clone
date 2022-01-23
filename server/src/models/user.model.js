@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
     {
-        mobile: { type: String, required: true, unique: true },
+        email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         cartItems: [{ type: Object, required: false }],
         wishList: [{ type: Object, required: false }],
@@ -14,19 +14,19 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-userSchema.pre("save", function (next) {
-    if (!this.isModified("password")) return next();
+// userSchema.pre("save", function (next) {
+//     if (!this.isModified("password")) return next();
 
-    const hash = bcryptjs.hashSync(this.password, 8);
-    this.password = hash
+//     const hash = bcryptjs.hashSync(this.password, 8);
+//     this.password = hash
 
-    return next();
-})
+//     return next();
+// })
 
-userSchema.methods.checkPassword = function (password) {
-    const match = bcryptjs.compareSync(password, this.password);
+// userSchema.methods.checkPassword = function (password) {
+//     const match = bcryptjs.compareSync(password, this.password);
 
-    return match;
-}
+//     return match;
+// }
 
-module.exports = mongoose.model("signUp", userSchema);
+module.exports = mongoose.model("users", userSchema);
