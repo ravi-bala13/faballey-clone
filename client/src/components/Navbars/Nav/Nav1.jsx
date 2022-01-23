@@ -9,8 +9,6 @@ import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { getID } from "../../../Redux/action";
 import { saveData } from "../../../utils/localStorage";
-import { Link } from "react-router-dom";
-
 export const Nav1 = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -93,6 +91,8 @@ export const Nav1 = () => {
     dispatch(getID(r._id));
     console.log("userId:", userId);
     // **************************************
+
+    alert("Login sucessfully");
 
     setloginSucess(loginSucess + 1);
     // setNavbar(true);

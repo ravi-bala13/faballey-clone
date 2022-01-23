@@ -44,6 +44,7 @@ export const ProductDetails = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log("data:", data);
+          alert("product is add in your bag");
         });
     } catch (err) {
       console.log("err:", err);
