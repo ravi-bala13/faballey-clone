@@ -21,6 +21,7 @@ export const Main = () => {
         ></Route>
         <Route path="/checkout/cart" element={<Cart />}></Route>
         <Route path="/shipping" element={<Shipping />}></Route>
+        <Route path="/payment" element={<Payment />}></Route>
         <Route path="*" element={<Home />}></Route>
       </Routes>
       <Footer />

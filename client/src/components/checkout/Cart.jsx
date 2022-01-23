@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React, { useEffect } from "react";
-import CartNavbar from "./CartNavbar";
-=======
-import React from "react";
+import { useEffect } from "react";
 import { CartNavbar } from "./CartNavbar";
->>>>>>> 5aa5ba4314049f4dfb6e4be734ad4c1850888fca
+import React from "react";
 import { MdDelete } from "react-icons/md";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useState } from "react";
@@ -52,7 +48,7 @@ export const Cart = () => {
 
   return (
     <div>
-      <CartNavbar name:name />
+      <CartNavbar />
       <div className="red-clr-box">
         Score free shipping on orders above INR 3000
       </div>

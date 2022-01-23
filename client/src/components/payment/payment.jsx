@@ -7,7 +7,10 @@ export const Payment = () => {
   get_data();
 
   const payNow = () => {
-    alert("order is placed successfully");
+    setTimeout(function () {
+      alert("Congratulations! your payment is successfully paid");
+      window.location.href = "/";
+    }, 1000);
   };
 
   return (

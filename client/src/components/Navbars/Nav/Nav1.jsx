@@ -142,15 +142,11 @@ export const Nav1 = () => {
               </span>{" "}
               | <span onClick={showModal}>Sign up</span>
             </p>
-<<<<<<< HEAD
-            <Link to={"/checkout/cart"}>
+            {/* <Link to={"/checkout/cart"}>
               {" "}
               <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
-            </Link>
-=======
+            </Link> */}
             <a href="/checkout/cart" className="text-black"><MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" /></a>
-
->>>>>>> 5aa5ba4314049f4dfb6e4be734ad4c1850888fca
           </div>
         </div>
       </div>
