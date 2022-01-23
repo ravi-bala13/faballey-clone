@@ -1,7 +1,27 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 export const Shipping = () => {
   const [form, setForm] = useState([]);
+  const [cart, setCart] = useState([]);
+  let id = "61ecefc76b66d6705191455e";
+  let sum = 0;
+
+  useEffect(() => {
+    getProductDetails();
+  }, []);
+
+  const getProductDetails = async () => {
+    const response = await fetch(`http://localhost:2345/users/${id}`);
+    let data = await response.json();
+    // console.log("data:", data);
+    setCart(data.cartItems);
+  };
+
+  cart.map((e) => {
+    sum = sum + e.price;
+  });
+  console.log("sum", sum);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,31 +36,31 @@ export const Shipping = () => {
   };
 
   return (
-    <div className="border-2 border-black mt-5 mx-auto w-9/12 p-2">
-      <div className="w-7/12 border border-slate-800">
+    <div className="flex mt-5 mx-auto w-9/12 p-2">
+      <div className="w-7/12">
         <p className="text-slate-700 text-xl">
           Where do you want us to deliver?
         </p>
         <div>
-          <div className="border border-gray-900 p-4">
+          <div className="border border-gray-300 p-4">
             <div className="flex">
-              <div className="flex-1 mr-2 border border-red-600">
+              <div className="flex-1 mr-2">
                 <label className="font-semibold">Full name*</label>
                 <br />
                 <input
                   type="text"
                   placeholder="enter name"
-                  className="border border-gray-500 rounded-sm w-full p-2"
+                  className="border border-gray-300 rounded-sm w-full p-2"
                   name="name"
                   onChange={handleChange}
                 />
               </div>
-              <div className="flex-1 border border-red-600">
+              <div className="flex-1">
                 <label className="font-semibold">Mobile Number*</label>
                 <br />
                 <input
                   type="text"
-                  className="border border-gray-500 rounded-sm w-full p-2"
+                  className="border border-gray-300 rounded-sm w-full p-2"
                   name="number"
                   onChange={handleChange}
                 />
@@ -48,11 +68,11 @@ export const Shipping = () => {
             </div>
             {/* second div */}
             <div className="flex">
-              <div className="flex-1 mr-2 border border-red-600">
+              <div className="flex-1 mr-2">
                 <label className="font-semibold">country*</label>
                 <br />
                 <select
-                  className="border border-gray-500 w-full p-2"
+                  className="border border-gray-300 w-full p-2"
                   name="country"
                   onChange={handleChange}
                 >
@@ -96,12 +116,12 @@ export const Shipping = () => {
                   <option value="2">United States</option>
                 </select>
               </div>
-              <div className="flex-1 border border-red-600">
+              <div className="flex-1">
                 <label className="font-semibold">Pincode*</label>
                 <br />
                 <input
                   type="text"
-                  className="border border-gray-500 rounded-sm w-full p-2"
+                  className="border border-gray-300 rounded-sm w-full p-2"
                   name="pincode"
                   onChange={handleChange}
                 />
@@ -112,7 +132,7 @@ export const Shipping = () => {
               <label className="font-semibold">Address*</label>
               <input
                 type="text"
-                className="border border-gray-500 rounded-sm w-full h-24"
+                className="border border-gray-300 rounded-sm w-full h-24"
                 name="address"
                 onChange={handleChange}
               />
@@ -136,7 +156,58 @@ export const Shipping = () => {
           </div>
         </div>
       </div>
-      <div></div>
+      {/* second half */}
+      <div className="w-5/12 ml-6">
+        <div className="flex justify-between">
+          <p className="text-slate-700 text-xl">Product Details</p>
+          <button className="text-pink-500">Edit bag</button>
+        </div>
+        {/* product details */}
+        <div
+          className={
+            cart.length < 4 ? "rounded-sm" : "rounded-sm overflow-scroll "
+          }
+        >
+          {cart.map((e, i) => (
+            <div key={i}>
+              <div className="flex mb-1">
+                <div className="w-1/6 mr-2">
+                  <img src={e.image} className="w-full" alt="" />
+                </div>
+                <div className="text-xs">
+                  <p className="m-0">{e.productName}</p>
+                  <p className="m-0">Category: {e.category} </p>
+                  <p className="m-0">Price: {e.price} </p>
+                </div>
+              </div>
+              <hr className="mb-1"></hr>
+            </div>
+          ))}
+        </div>
+        {/* price details */}
+        <div>
+          <p className="text-slate-700 text-xl">Price Details</p>
+        </div>
+        <div className="rounded-sm bg-gray-100 p-4">
+          <div className="flex justify-between">
+            <p className="text-slate-700">Sub Total:</p>
+            <p>₹ {sum}</p>
+          </div>
+          <hr></hr>
+          <div className="flex justify-between">
+            <p className="text-pink-500">Total:</p>
+            <p className="text-pink-500">₹ {sum}</p>
+          </div>
+          <hr></hr>
+        </div>
+        <div className="border border-slate-300 p-2 mt-4">
+          <p className="text-xs">Estimated Delivery Time</p>
+          <p className="text-xs mb-0">
+            India : 4-6 business days. <br></br>International: 7-12 business
+            days.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

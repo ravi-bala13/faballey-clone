@@ -145,7 +145,7 @@ export const Home = () => {
       7000
     );
 
-    return () => { };
+    return () => {};
   }, [index]);
 
   const nextSlide = () => {
@@ -188,14 +188,10 @@ export const Home = () => {
     <>
       <Navbar />
       <div>
-        <div className="border flex text-xs font-semibold text-center w-full">
-          <div className="border flex-1 py-2 bg-red-50">
-            Party '21 Collection
-          </div>
-          <div className="border flex-1 py-2 bg-red-200">
-            EOSS | UPTO 70% OFF
-          </div>
-          <div className="border flex-1 py-1 bg-red-50">
+        <div className="flex text-xs font-semibold text-center w-full">
+          <div className="flex-1 py-2 bg-red-50">Party '21 Collection</div>
+          <div className="flex-1 py-2 bg-red-200">EOSS | UPTO 70% OFF</div>
+          <div className="flex-1 py-1 bg-red-50">
             📢PSA: Free shipping on orders above ₹ 3000
           </div>
         </div>
@@ -323,7 +319,7 @@ export const Home = () => {
           </div>
         </div>
 
-        {/* deals you dont want to miss */}
+        {/* deals you dont want to miss section*/}
 
         <div className="text-center text-2xl font-semibold ">
           <p className="m-4">DEALS YOU DON'T WANT TO MISS</p>
@@ -376,7 +372,7 @@ export const Home = () => {
           </div>
         </div>
 
-        {/* party wear 50% off */}
+        {/* party wear 50% off section*/}
 
         <div className="mt-8">
           <img

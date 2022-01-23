@@ -7,7 +7,7 @@ import 'antd/dist/antd.min.css';
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
 
-export const Nav1 = ({ handleSignin }) => {
+export const Nav1 = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
@@ -39,7 +39,9 @@ export const Nav1 = ({ handleSignin }) => {
         setFormErrors(validate(formValues));
         setIsSubmit(true);
     };
-    const [data, setData] = useState([]);
+    const [loginSucess, setloginSucess] = useState(0);
+
+    const [loginClick, setLoginClick] = useState(0);
 
     useEffect(() => {
         console.log(formErrors);
@@ -53,10 +55,22 @@ export const Nav1 = ({ handleSignin }) => {
                 )
             });
             setIsModalVisible(false);
-            getData();
+            setLoginClick(loginClick + 1);
         }
     }, [formErrors]);
     // login
+
+    const handleSubmitss = (e) => {
+        e.preventDefault();
+        getData();
+        setLoginClick(loginClick + 1);
+    };
+
+    const [loginBtn, setLoginBtn] = useState(false);
+
+    // const [ChangeNavbar, setNavbar] = useState(false);
+
+
     const getData = async () => {
         let res = await fetch(`http://localhost:2345/users/login`, {
             method: "POST",
@@ -66,8 +80,13 @@ export const Nav1 = ({ handleSignin }) => {
             )
         });
         let r = await res.json();
+        // here i am receiving email, user I'D and password
         console.log("check email is there or not", r);
+        setloginSucess(loginSucess + 1);
+        // setNavbar(true);
     };
+
+
 
     const validate = (values) => {
         const errors = {};
@@ -99,12 +118,13 @@ export const Nav1 = ({ handleSignin }) => {
             </div>
             <div className="w-2/6 border border-white">
                 <div className="text-xs font-medium mt-2 float-right mr-6">
-                    <p className="inline-block cursor-pointer">Track Order | Gift Cards | <span onClick={showModal}>Login</span> | <span onClick={showModal}>Sign up</span></p>
+                    <p className="inline-block cursor-pointer">Track Order | Gift Cards | <span onClick={() => setLoginBtn(true)} onDoubleClick={() => setloginSucess(0)}>Login</span> | <span onClick={showModal}>Sign up</span></p>
                     <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
                 </div>
             </div>
         </div>
-        <Modal title="LOGIN OR SIGNUP" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
+        {/* sign up */}
+        <Modal title="SIGNUP" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
             <div className="w-full py-8">
                 <div className="w-11/12 ml-2">
                     {/* signUp form */}
@@ -149,5 +169,60 @@ export const Nav1 = ({ handleSignin }) => {
                 </div>
             </div>
         </Modal>
+        {/* login */}
+        {loginBtn ?
+            <div className="w-4/12 py-8 m-auto fixed z-50 bg-white flex flex-col" style={{ marginLeft: "450px", marginTop: "50px" }}>
+                <div className="w-full text-black font-bold text-xl flex justify-between">
+                    <div className="ml-4">
+                        <h1 className="">Login</h1>
+                    </div>
+                    <div>
+                        <h1 className="mr-4 cursor-pointer" onClick={() => setLoginBtn(false)}>X</h1>
+                    </div>
+                </div>
+                <hr />
+                <div className="w-11/12 ml-2 mt-10">
+                    {/* login form */}
+                    <form onSubmit={handleSubmitss}>
+                        {loginSucess == 0 ? <h2 className="text-red-600 ml-8">Enter correct Email & password</h2> : null}
+                        <label><h4 className="font-bold ml-12">for a quicker checkout</h4></label>
+                        <div className="w-full m-auto">
+                            <div className="w-11/12 m-auto">
+                                <input className="w-full h-10 border border-black"
+                                    type="text"
+                                    name="email"
+                                    placeholder="Enter Your Email"
+                                    value={formValues.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <p className="text-red-500">{formErrors.email}</p>
+                            <div className="w-11/12 m-auto">
+                                <input className="w-full h-10 border border-black"
+                                    type="password"
+                                    name="password"
+                                    placeholder="Enter Your Password"
+                                    value={formValues.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <p className="text-red-500">{formErrors.password}</p>
+                            <button className="w-11/12 py-2 border border-pink-600 bg-pink-600 font-bold text-white" style={{ marginLeft: "18px" }} >{loginSucess > 0 ? setLoginBtn(false) : null}CONTINUE</button>
+                        </div>
+                    </form>
+                    <div className="w-full justify-center ml-16 mt-4">
+                        <h5 className="inline-block ml-28">Or continue with</h5>
+                    </div>
+                    <div className="w-full flex justify-evenly mt-4">
+                        <div className="w-5/12">
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/loginfb.png" alt="" />
+                        </div>
+                        <div className="w-5/12">
+                            <img className="cursor-pointer" src="https://www.faballey.com/images/logingogl.png" alt="google" />
+                        </div>
+                    </div>
+                    <h5 className="inline-block ml-52 mt-6 cursor-pointer" onClick={() => setLoginBtn(false)}>skip</h5>
+                </div>
+            </div> : null}
     </>
 }

@@ -20,6 +20,8 @@ export const Main = () => {
         <Route path="*" element={<Home />}></Route>
       </Routes>
       <Footer />
+
+      {/* <Shipping></Shipping> */}
     </>
   );
 };
