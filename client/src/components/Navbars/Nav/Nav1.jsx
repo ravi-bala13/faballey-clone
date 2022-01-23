@@ -53,21 +53,25 @@ export const Nav1 = ({ handleSignin }) => {
                 )
             });
             setIsModalVisible(false);
-            getData();
         }
     }, [formErrors]);
     // login
-    const getData = async () => {
-        let res = await fetch(`http://localhost:2345/users/login`, {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(
-                formValues
-            )
-        });
-        let r = await res.json();
-        console.log("check email is there or not", r);
-    };
+    const [loginClick, setLoginClick] = useState(0);
+    useEffect(() => {
+        const getData = async () => {
+            let res = await fetch(`http://localhost:2345/users/login`, {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(
+                    formValues
+                )
+            });
+            let r = await res.json();
+            console.log("check email is there or not", r);
+        };
+        getData();
+    }, [loginClick])
+
 
     const validate = (values) => {
         const errors = {};
@@ -99,11 +103,12 @@ export const Nav1 = ({ handleSignin }) => {
             </div>
             <div className="w-2/6 border border-white">
                 <div className="text-xs font-medium mt-2 float-right mr-6">
-                    <p className="inline-block cursor-pointer">Track Order | Gift Cards | <span onClick={showModal}>Login</span> | <span onClick={showModal}>Sign up</span></p>
+                    <p className="inline-block cursor-pointer">Track Order | Gift Cards | <span onClick={showModal} onClick={() => setLoginClick(loginClick + 1)}>Login</span> | <span onClick={showModal}>Sign up</span></p>
                     <MdCardTravel className="inline-block ml-2 text-xl cursor-pointer" />
                 </div>
             </div>
         </div>
+        {/* sign up */}
         <Modal title="LOGIN OR SIGNUP" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} cancelButtonProps={{ style: { display: 'none' } }} okButtonProps={{ style: { display: 'none' } }}>
             <div className="w-full py-8">
                 <div className="w-11/12 ml-2">
@@ -149,5 +154,6 @@ export const Nav1 = ({ handleSignin }) => {
                 </div>
             </div>
         </Modal>
+        {/* login */}
     </>
 }
