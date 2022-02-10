@@ -13,7 +13,7 @@ const cartController = require("./controllers/cart.controller");
 const signUp = require("./controllers/user.controller");
 const login = require("./controllers/login.controller")
 
-app.use("/products", productController);
+app.use("/", productController);
 
 app.use("/cart", cartController);
 
