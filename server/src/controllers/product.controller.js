@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const products = await Product.find().lean().exec();
-  res.send(products);
+  return res.status(201).send(products);
 });
 
 router.get("details/:id", async (req, res) => {
