@@ -49,7 +49,7 @@ export const Nav1 = () => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log("here i am getting data", formValues);
-      fetch(`http://localhost:2345/users`, {
+      fetch(`https://cryptic-oasis-92145.herokuapp.com/users`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(formValues),
@@ -76,7 +76,7 @@ export const Nav1 = () => {
   // **************************************
 
   const getData = async () => {
-    let res = await fetch(`http://localhost:2345/users/login`, {
+    let res = await fetch(`https://cryptic-oasis-92145.herokuapp.com/users/login`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(formValues),

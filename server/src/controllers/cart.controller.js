@@ -1,10 +1,10 @@
-const Cart = require("../Models/cart.model.js");
-
 const express = require("express");
+
+const Cart = require("../models/cart.model");
 
 const router = express.Router();
 
-router.get("", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const cart = await Cart.find().populate("product").lean().exec();
     return res.status(201).send(cart);
@@ -13,7 +13,7 @@ router.get("", async (req, res) => {
   }
 });
 
-router.post("", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     console.log(req.body);
     const cart = await Cart.create(req.body);

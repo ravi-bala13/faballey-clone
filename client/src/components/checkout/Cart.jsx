@@ -32,7 +32,7 @@ export const Cart = () => {
 
   const getProducts = () => {
     try {
-      fetch(`http://localhost:2345/users/${userId}`)
+      fetch(`https://cryptic-oasis-92145.herokuapp.com/users/${userId}`)
         .then((res) => res.json())
         .then((data) => {
           console.log("data:", data.cartItems);

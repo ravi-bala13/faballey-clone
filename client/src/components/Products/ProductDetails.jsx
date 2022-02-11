@@ -19,7 +19,7 @@ export const ProductDetails = () => {
   const { id } = useParams();
 
   const getProductDetails = async () => {
-    const response = await fetch(`http://localhost:2345/productDetail/${id}`);
+    const response = await fetch(`https://cryptic-oasis-92145.herokuapp.com/productDetail/${id}`);
     let data = await response.json();
     // console.log("data:", data);
     setProduct(data);
@@ -34,7 +34,7 @@ export const ProductDetails = () => {
     console.log("userId:", userId);
 
     try {
-      fetch(`http://localhost:2345/users/updateCart/${userId}`, {
+      fetch(`https://cryptic-oasis-92145.herokuapp.com/users/updateCart/${userId}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

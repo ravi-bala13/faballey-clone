@@ -158,7 +158,7 @@ export const Products = () => {
 
   const getProducts = () => {
     try {
-      fetch("http://localhost:2345/products")
+      fetch("https://cryptic-oasis-92145.herokuapp.com/products")
         .then((res) => res.json())
         .then((data) => {
           // console.log("data:", data);

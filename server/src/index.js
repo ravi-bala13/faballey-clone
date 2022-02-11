@@ -7,6 +7,11 @@ app.use(express.json());
 
 app.use(cors());
 
+app.get('/', function (req, res) {
+    return res.redirect('http://localhost:3000');
+});
+
+
 const productController = require("./controllers/product.controller");
 const productDetailsController = require("./controllers/productDetails.controller");
 const cartController = require("./controllers/cart.controller");
@@ -17,12 +22,16 @@ const login = require("./controllers/login.controller")
 
 app.use("/products", productController);
 
-app.use("/cart", cartController);
-
 app.use("/productDetail", productDetailsController);
+
+app.use("/cart", cartController);
 
 app.use("/users", signUp);
 
 app.use("/login", login);
+
+// app.get('', function (req, res) {
+//     return res.redirect('http://localhost:3000');
+// });
 
 module.exports = app;

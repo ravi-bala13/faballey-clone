@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 module.exports = () => {
   return mongoose.connect(
-    // "mongodb+srv://prajwal:prajwal@cluster0.p5lz6.mongodb.net/fabelly"
     "mongodb+srv://sachida44:sachida44@cluster0.xiqh3.mongodb.net/faballey"
   );
   // return mongoose.connect("mongodb+srv://sachida44:sachida44@cluster0.xiqh3.mongodb.net/faballey");

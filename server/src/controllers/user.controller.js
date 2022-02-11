@@ -1,21 +1,11 @@
 const express = require("express");
 
-const User = require("../Models/user.model");
+const User = require("../models/user.model");
 
 const router = express.Router();
 
-router.post("", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    // console.log("from signup:", req.body);
-    // const productByMobile = await User.findOne({ email: req.body.email })
-
-    //   .lean()
-    //   .exec();
-    // console.log("productByMobile:", productByMobile);
-    // if (productByMobile) {
-    //   throw new Error("Please try with a different email address");
-    // }
-
     const user = await User.create(req.body);
     console.log("user:", user);
     return res.status(201).send(user);
@@ -67,7 +57,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// &&&&&&&&&&&&&&&&&&& bals code
+
 router.patch("/updateCart/:userId", async (req, res) => {
   console.log("hai");
   try {

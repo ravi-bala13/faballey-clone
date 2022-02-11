@@ -12,7 +12,7 @@ export const Shipping = () => {
   }, []);
 
   const getProductDetails = async () => {
-    const response = await fetch(`http://localhost:2345/users/${id}`);
+    const response = await fetch(`https://cryptic-oasis-92145.herokuapp.com/users/${id}`);
     let data = await response.json();
     // console.log("data:", data);
     setCart(data.cartItems);
