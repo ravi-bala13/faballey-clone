@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', function (req, res) {
-    return res.redirect('http://localhost:3000');
+    return res.redirect('https://faballey-clone.vercel.app/');
 });
 
 
