@@ -38,7 +38,7 @@ Prerequisites
 
 ## Features
 
-- Login and Sign up using Mobile OTP
+- Login and Sign up
 - Carousel & Search Results
 - Sorting on product Page
 - Add to cart
