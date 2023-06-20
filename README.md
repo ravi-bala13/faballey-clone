@@ -17,10 +17,10 @@ Prerequisites
 - VS Code
   Installation
 - Clone the repository
-  Git Clone - https://github.com/Sachi4496/faballey-clone 
+  Git Clone - [https://github.com/Sachi4496/faballey-clone ](https://github.com/ravi-bala13/faballey-clone.git)
 
 ```bash
- git clone https://github.com/Sachi4496/faballey-clone.git
+ git clone [https://github.com/Sachi4496/faballey-clone.git](https://github.com/ravi-bala13/faballey-clone.git)
 ```
 #### `npm i`
 #### `npm run server`
